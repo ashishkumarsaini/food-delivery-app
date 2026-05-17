@@ -4,6 +4,7 @@ import { Image, Pressable, StyleSheet, Text, View, ScrollView } from "react-nati
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { RESTRAURENTS } from "../../constants/restraurents";
 import { COLORS } from "../../constants/theme";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function DishScreen() {
   const navigation = useNavigation<any>();

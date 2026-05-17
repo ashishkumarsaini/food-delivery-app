@@ -4,6 +4,8 @@ export const RESTRAURENTS: Restraurent[] = [
   {
     id: "spice-garden",
     name: "Spice Garden",
+    image:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
     location: "Sector 17, Chandigarh",
     isOpen: true,
     dishes: [
@@ -45,6 +47,8 @@ export const RESTRAURENTS: Restraurent[] = [
   {
     id: "urban-bites",
     name: "Urban Bites",
+    image:
+      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
     location: "Model Town, Ludhiana",
     isOpen: true,
     dishes: [
@@ -86,6 +90,8 @@ export const RESTRAURENTS: Restraurent[] = [
   {
     id: "sushi-street",
     name: "Sushi Street",
+    image:
+      "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?auto=format&fit=crop&w=1200&q=80",
     location: "Cyber Hub, Gurugram",
     isOpen: false,
     dishes: [

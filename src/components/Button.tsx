@@ -1,22 +1,14 @@
 import { COLORS } from '../constants/theme'
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { Pressable, StyleSheet, Text } from 'react-native'
 
-export const Button: FC<{ label: string, onPress: () => void }> = ({ label, onPress }) => {
+export const Button: FC<{ children: ReactNode, onPress: () => void }> = ({ children, onPress }) => {
   return (
     <Pressable
       style={({ pressed }) => StyleSheet.compose(styles.button, pressed && styles.buttonPresses)}
       onPress={onPress}
     >
-      <Text
-        style={{
-          color: "#FFFFFF",
-          fontSize: 17,
-          fontWeight: "800"
-        }}
-      >
-        {label}
-      </Text>
+      {children}
     </Pressable>
   )
 }
@@ -30,6 +22,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.ink,
     boxShadow: "0 10px 24px rgba(31, 23, 21, 0.18)",
     transform: [{ scale: 1 }],
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 12,
   },
   buttonPresses: {
     transform: [{ scale: 0.99 }]

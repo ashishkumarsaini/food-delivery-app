@@ -1,16 +1,12 @@
 import { Button } from "../../components/Button";
 import { COLORS } from "../../constants/theme";
-import { Image, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-
-type RootStackParamList = {
-  GetStarted: undefined;
-  Home: undefined;
-};
+import React from "react";
+import Feather from '@expo/vector-icons/Feather';
 
 export function GetStartedScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<any>();
 
   const onPress = () => {
     navigation.replace("Home");
@@ -18,54 +14,86 @@ export function GetStartedScreen() {
 
   return (
     <View
-      style={{
-        flexGrow: 1,
-        paddingHorizontal: 24,
-        paddingTop: 58,
-        paddingBottom: 28,
-      }}
+      style={styles.container}
     >
-      <View style={{ flex: 1, justifyContent: "center", gap: 30 }}>
-        <View style={{ alignItems: "center", justifyContent: "center", gap: 22 }}>
+      <View style={styles.content}>
+        <View style={styles.imageContainer}>
           <Image
             source={{
               uri: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=85",
             }}
-            style={{
-              width: '100%',
-              aspectRatio: 1 / 1,
-              borderRadius: 36,
-            }}
+            style={styles.image}
           />
-          <View style={{ alignItems: "center", gap: 10 }}>
+          <View style={styles.textContainer}>
             <Text
-              style={{
-                color: COLORS.ink,
-                fontSize: 33,
-                fontWeight: "900",
-                letterSpacing: 0,
-                lineHeight: 39,
-                textAlign: "center",
-                textTransform: "uppercase",
-              }}
+              style={styles.title}
             >
               Food Delivery
             </Text>
             <Text
-              style={{
-                maxWidth: 320,
-                color: COLORS.clay,
-                fontSize: 16,
-                lineHeight: 23,
-                textAlign: "center",
-              }}
+              style={styles.description}
             >
               Order warm meals, fresh snacks, and your favorite cravings from nearby kitchens.
             </Text>
           </View>
         </View>
-        <Button onPress={onPress} label="Get Started" />
+        <Button onPress={onPress} >
+          <Text
+            style={{
+              color: "#FFFFFF",
+              fontSize: 17,
+              fontWeight: "800"
+            }}
+          >
+            Get Started
+          </Text>
+          <Feather name="arrow-right-circle" size={24} color="#FFFFFF" />
+        </Button>
       </View>
-    </View>
+    </View >
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    paddingHorizontal: 24,
+    paddingTop: 58,
+    paddingBottom: 28,
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    gap: 30,
+  },
+  imageContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 22,
+  },
+  image: {
+    width: '100%',
+    aspectRatio: 1 / 1,
+    borderRadius: 36,
+  },
+  textContainer: {
+    alignItems: "center",
+    gap: 10,
+  },
+  title: {
+    color: COLORS.ink,
+    fontSize: 33,
+    fontWeight: "900",
+    letterSpacing: 0,
+    lineHeight: 39,
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
+  description: {
+    maxWidth: 320,
+    color: COLORS.clay,
+    fontSize: 16,
+    lineHeight: 23,
+    textAlign: "center",
+  }
+})

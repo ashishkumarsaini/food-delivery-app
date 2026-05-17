@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { HomeScreen } from '../screens/Home';
+import { HomeScreen } from '../screens';
 import SearchScreen from '../screens/Search';
 import OrdersScreen from '../screens/Orders';
 import ProfileScreen from '../screens/Profile';
@@ -65,10 +65,8 @@ export const TabNavigator = () => {
 const styles = StyleSheet.create({
   navigatorShell: {
     flex: 1,
-    backgroundColor: COLORS.clay,
   },
   sceneContainer: {
-    backgroundColor: COLORS.clay,
     display: 'flex',
   },
   tabBar: {
