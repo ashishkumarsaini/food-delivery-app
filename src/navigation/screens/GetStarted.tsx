@@ -1,15 +1,23 @@
-import Button from "@/components/button";
-import { palette } from "@/constants/color-pallet";
-import { Stack } from "expo-router";
+import { Button } from "../../components/Button";
+import { COLORS } from "../../constants/theme";
 import { Image, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export default function GetStartedScreen() {
+type RootStackParamList = {
+  GetStarted: undefined;
+  Home: undefined;
+};
+
+export function GetStartedScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const onPress = () => {
-  }
+    navigation.replace("Home");
+  };
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <View
         style={{
           flexGrow: 1,
@@ -34,7 +42,7 @@ export default function GetStartedScreen() {
             <View style={{ alignItems: "center", gap: 10 }}>
               <Text
                 style={{
-                  color: palette.ink,
+                  color: COLORS.ink,
                   fontSize: 33,
                   fontWeight: "900",
                   letterSpacing: 0,
@@ -48,7 +56,7 @@ export default function GetStartedScreen() {
               <Text
                 style={{
                   maxWidth: 320,
-                  color: palette.clay,
+                  color: COLORS.clay,
                   fontSize: 16,
                   lineHeight: 23,
                   textAlign: "center",

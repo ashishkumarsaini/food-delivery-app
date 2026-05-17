@@ -1,8 +1,8 @@
-import { palette } from '@/constants/color-pallet'
+import { COLORS } from '../constants/theme'
 import React, { FC } from 'react'
 import { Pressable, StyleSheet, Text } from 'react-native'
 
-const Button: FC<{ label: string, onPress: () => void }> = ({ label, onPress }) => {
+export const Button: FC<{ label: string, onPress: () => void }> = ({ label, onPress }) => {
   return (
     <Pressable
       style={({ pressed }) => StyleSheet.compose(styles.button, pressed && styles.buttonPresses)}
@@ -10,7 +10,7 @@ const Button: FC<{ label: string, onPress: () => void }> = ({ label, onPress }) 
     >
       <Text
         style={{
-          color: palette.wine,
+          color: COLORS.wine,
           fontSize: 17,
           fontWeight: "800"
         }}
@@ -21,16 +21,14 @@ const Button: FC<{ label: string, onPress: () => void }> = ({ label, onPress }) 
   )
 }
 
-export default Button
-
 const styles = StyleSheet.create({
   button: {
     minHeight: 62,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: palette.orange,
-    boxShadow: `0 10px 24px ${palette.orange}`,
+    backgroundColor: COLORS.orange,
+    boxShadow: `0 10px 24px ${COLORS.orange}`,
     transform: [{ scale: 1 }],
   },
   buttonPresses: {

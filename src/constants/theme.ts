@@ -1,4 +1,4 @@
-export const palette = {
+export const COLORS = {
   ink: "#130303",
   wine: "#2D080A",
   clay: "#7C3626",
