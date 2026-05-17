@@ -1,7 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
 import { Restraurent } from '../../types/restraurent'
-import { COLORS } from '../../constants/theme'
 
 export const RestraurentTile: FC<{ restraurent: Restraurent }> = ({ restraurent }) => {
   const { name, image, location } = restraurent
@@ -21,11 +20,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   name: {
-    marginTop: 10,
-    fontSize: 15
+    fontSize: 16,
+    fontWeight: "500"
   },
   location: {
-    marginTop: 2,
-    fontSize: 13,
+    fontSize: 14,
+    fontWeight: "600",
   }
 })

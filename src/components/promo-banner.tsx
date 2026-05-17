@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 16,
-    borderRadius: 22,
+    borderRadius: 10,
     padding: 14,
     backgroundColor: "#FFD53D",
     overflow: "hidden",

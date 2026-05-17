@@ -1,27 +1,21 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-import { Dish } from '../../types/dish'
-import { COLORS } from '../../constants/theme';
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from '@react-navigation/native';
+import { Dish } from '../../../types/dish';
+import { COLORS } from '../../../constants/theme';
 
-export const DishTile: FC<{ dish: Dish, restraurentId: string, restraurentName: string }> = ({
-  dish,
-  restraurentId,
-  restraurentName,
-}) => {
-  const navigation = useNavigation<any>();
-  const { id, image, deliveryTime, type, price, name, available } = dish;
-
-  const onClick = () => {
-    navigation.navigate("Dish", { restraurentId, dishId: id });
-  }
-
+const DetailedDishTile: FC<{
+  dish: Dish;
+  onClick: (restraurentId: string, dishId: string) => void;
+  restraurentName: string;
+  restraurentId: string;
+}> = ({ dish, onClick, restraurentName, restraurentId }) => {
+  const { name, price, image, deliveryTime, type, available } = dish;
   return (
     <Pressable
-      key={id}
+      key={dish.id}
       style={styles.foodCard}
-      onPress={onClick}
+      onPress={() => onClick(restraurentId, dish.id)}
     >
       <View style={styles.imageWrap}>
         <Image source={{ uri: image }} style={styles.foodImage} />
@@ -65,8 +59,10 @@ export const DishTile: FC<{ dish: Dish, restraurentId: string, restraurentName: 
         </View>
       </View>
     </Pressable>
-  )
-}
+  );
+};
+
+export default DetailedDishTile;
 
 const styles = StyleSheet.create({
   foodCard: {
