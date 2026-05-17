@@ -1,0 +1,1 @@
+export { RestraurentScreen } from './Restraurent';

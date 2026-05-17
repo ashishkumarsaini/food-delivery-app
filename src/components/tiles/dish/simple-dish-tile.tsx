@@ -3,7 +3,6 @@ import React, { FC } from 'react'
 import { Dish } from '../../../types/dish';
 import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from '../../../constants/theme';
-import { useNavigation } from '@react-navigation/native';
 
 const SimpleDishTile: FC<{
   dish: Dish, restraurentId: string,

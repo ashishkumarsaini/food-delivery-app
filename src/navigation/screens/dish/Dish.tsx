@@ -1,6 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { RESTRAURENTS } from "../../../constants/restraurents";
 import { DishGallery } from "./components/dish-gallery";
 import { DishInfo } from "./components/dish-info";
@@ -11,8 +10,6 @@ import { ScreenWrapper } from "../../../components/Screen";
 export function DishScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
-
-  const insets = useSafeAreaInsets();
 
   const { restraurentId, dishId } = route.params;
 
@@ -28,19 +25,19 @@ export function DishScreen() {
     <ScreenWrapper>
       <ScrollView
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
       >
         <DishGallery
           image={dish.image}
           onBack={() => navigation.goBack()}
         />
         <View style={styles.content}>
-          <DishInfo dish={dish} />
-          <AddToOrder dishes={addOns.length > 0 ? addOns : restraurent.dishes} />
+          <DishInfo dish={dish} restraurent={restraurent} />
+          <AddToOrder dishes={addOns} restraurentId={restraurentId} restraurentName={restraurent.name} />
         </View>
       </ScrollView>
       <DishCheckoutBar
         price={dish.price}
-        bottomInset={insets.bottom}
         onAddToCart={() => navigation.navigate("Cart")}
       />
     </ScreenWrapper>

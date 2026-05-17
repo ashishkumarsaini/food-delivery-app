@@ -9,7 +9,7 @@ import HomeHeader from "./components/header";
 export function HomeScreen() {
   return (
     <ScreenWrapper>
-      <ScrollView style={styles.screen} contentContainerStyle={{ gap: 15 }}>
+      <ScrollView style={styles.screen} contentContainerStyle={{ gap: 15, paddingBottom: 100 }}>
         <View style={styles.paddingContainer}>
           <HomeHeader />
         </View>

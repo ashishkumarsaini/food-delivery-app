@@ -2,27 +2,19 @@ import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-nati
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Dish } from "../../../../types/dish";
 import { COLORS } from "../../../../constants/theme";
+import { DishTile } from "../../../../components/tiles/dish";
 
-export function AddToOrder({ dishes }: { dishes: Dish[] }) {
+export function AddToOrder({ dishes, restraurentName, restraurentId }: { dishes: Dish[], restraurentName: string, restraurentId: string }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Add to order</Text>
+      <Text style={styles.heading}>You may also like</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.list}
       >
         {dishes.map((dish) => (
-          <Pressable key={dish.id} style={styles.card}>
-            <View>
-              <Image source={{ uri: dish.image }} style={styles.image} />
-              <View style={styles.addButton}>
-                <Ionicons name="add" size={15} color="#FFFFFF" />
-              </View>
-            </View>
-            <Text numberOfLines={1} style={styles.name}>{dish.name}</Text>
-            <Text style={styles.price}>${dish.price.toFixed(2)}</Text>
-          </Pressable>
+          <DishTile key={dish.id} dish={dish} restraurentId={restraurentId} restraurentName={restraurentName} />
         ))}
       </ScrollView>
     </View>
@@ -32,7 +24,6 @@ export function AddToOrder({ dishes }: { dishes: Dish[] }) {
 const styles = StyleSheet.create({
   container: {
     gap: 12,
-    paddingLeft: 24,
   },
   heading: {
     color: COLORS.ink,

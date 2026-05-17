@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 const tabIcons = {
   Home: ['home', 'home-outline'],
   Search: ['search', 'search-outline'],
-  Orders: ['heart', 'heart-outline'],
+  Orders: ['bag-check', 'bag-outline'],
   Profile: ['person', 'person-outline'],
 } as const;
 

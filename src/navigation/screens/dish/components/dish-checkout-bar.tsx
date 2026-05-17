@@ -1,44 +1,43 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { COLORS } from "../../../../constants/theme";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export function DishCheckoutBar({
   price,
-  bottomInset,
   onAddToCart,
 }: {
   price: number;
-  bottomInset: number;
   onAddToCart: () => void;
 }) {
+  const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
+  const tabBarWidth = 300;
+  const tabBarLeft = (width - tabBarWidth) / 2;
+
   return (
-    <View style={[styles.container, { paddingBottom: bottomInset + 10 }]}>
-      <View style={styles.bar}>
-        <Text style={styles.price}>${price.toFixed(2)}</Text>
-        <Pressable style={styles.button} onPress={onAddToCart}>
-          <Text style={styles.buttonText}>Add to cart</Text>
-        </Pressable>
-      </View>
+    <View style={[styles.container, { bottom: insets.bottom + 18 }]}>
+      <Pressable onPress={onAddToCart} style={[styles.bar, { width: tabBarWidth, transform: [{ translateX: tabBarLeft }] }]}>
+        <Text style={styles.price}>Rs. {price.toFixed(2)}</Text>
+        <View style={styles.icon}>
+          <FontAwesome name="cart-plus" size={25} color={COLORS.ink} />
+        </View>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    paddingHorizontal: 24,
-    paddingTop: 10,
-    backgroundColor: "rgba(255, 247, 239, 0.96)",
+    position: 'absolute'
   },
   bar: {
-    height: 54,
+    height: 65,
+    borderRadius: 50,
+    backgroundColor: COLORS.ink,
+    overflow: 'hidden',
     flexDirection: "row",
     alignItems: "center",
-    overflow: "hidden",
-    borderRadius: 7,
-    backgroundColor: COLORS.orange,
   },
   price: {
     flex: 1,
@@ -47,11 +46,15 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
   },
-  button: {
-    flex: 1,
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
+  icon: {
+    backgroundColor: COLORS.peach,
+    borderRadius: 999,
+    height: 55,
+    width: 55,
+    marginRight: 5,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
     color: "#FFFFFF",
