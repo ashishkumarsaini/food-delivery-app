@@ -24,9 +24,6 @@ const DetailedDishTile: FC<{
           <Ionicons name="star" size={12} color="#FFD53D" />
           <Text style={styles.ratingText}>4.8</Text>
         </View>
-        <Pressable style={styles.favoriteButton}>
-          <Ionicons name="heart-outline" size={18} color={COLORS.ink} />
-        </Pressable>
       </View>
 
       <View style={styles.foodContent}>
@@ -36,26 +33,6 @@ const DetailedDishTile: FC<{
             <Text numberOfLines={1} style={styles.restraurentName}>{restraurentName}</Text>
           </View>
           <Text style={styles.price}>${price.toFixed(0)}</Text>
-        </View>
-
-        <View style={styles.metaRow}>
-          <View style={styles.metaPill}>
-            <Ionicons name="time-outline" size={13} color={COLORS.clay} />
-            <Text style={styles.metaText}>{deliveryTime}</Text>
-          </View>
-          <View style={[styles.metaPill, type === "veg" ? styles.vegPill : styles.nonVegPill]}>
-            <View style={[styles.typeDot, type === "veg" ? styles.vegDot : styles.nonVegDot]} />
-            <Text style={styles.metaText}>{type === "veg" ? "Veg" : "Non-veg"}</Text>
-          </View>
-        </View>
-
-        <View style={styles.footerRow}>
-          <Text style={[styles.availability, !available && styles.unavailable]}>
-            {available ? "Available now" : "Currently sold out"}
-          </Text>
-          <View style={[styles.arrowButton, !available && styles.arrowDisabled]}>
-            <Ionicons name="arrow-forward" size={17} color={available ? "#FFFFFF" : COLORS.clay} />
-          </View>
         </View>
       </View>
     </Pressable>
@@ -68,18 +45,15 @@ const styles = StyleSheet.create({
   foodCard: {
     width: 254,
     marginRight: 16,
-    borderRadius: 26,
-    backgroundColor: "#FFFFFF",
     overflow: "hidden",
-    boxShadow: "0 12px 28px rgba(31, 23, 21, 0.14)",
   },
   imageWrap: {
     height: 148,
-    backgroundColor: COLORS.peach,
   },
   foodImage: {
     width: "100%",
     height: "100%",
+    borderRadius: 10,
   },
   imageShade: {
     position: "absolute",
@@ -87,12 +61,11 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     height: 58,
-    backgroundColor: "rgba(31, 23, 21, 0.2)",
   },
   ratingChip: {
     position: "absolute",
     top: 10,
-    left: 10,
+    right: 10,
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
@@ -106,17 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: "700",
   },
-  favoriteButton: {
-    position: "absolute",
-    top: 12,
-    right: 12,
-    width: 36,
-    height: 36,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 999,
-    backgroundColor: "rgba(255, 255, 255, 0.92)",
-  },
   foodContent: {
     padding: 14,
     gap: 12,
@@ -129,7 +91,7 @@ const styles = StyleSheet.create({
   foodName: {
     color: COLORS.ink,
     fontSize: 17,
-    fontWeight: "900",
+    fontWeight: "500",
   },
   restraurentName: {
     marginTop: 4,
@@ -137,16 +99,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   price: {
-    minWidth: 52,
-    overflow: "hidden",
-    borderRadius: 999,
-    paddingHorizontal: 10,
-    paddingVertical: 7,
     color: COLORS.ink,
     fontSize: 13,
-    fontWeight: "900",
-    textAlign: "center",
-    backgroundColor: "#FFD53D",
+    fontWeight: "500",
   },
   metaRow: {
     flexDirection: "row",

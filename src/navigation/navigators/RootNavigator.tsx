@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { GetStartedScreen } from "../screens/GetStarted";
 import { TabNavigator } from "./TabNavigator";
-import DishScreen from "../screens/Dish";
+import { DishScreen } from "../screens";
 import CartScreen from "../screens/Cart";
 
 const Stack = createNativeStackNavigator();

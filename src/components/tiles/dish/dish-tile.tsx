@@ -18,7 +18,7 @@ export const DishTile: FC<{ dish: Dish, restraurentId: string, restraurentName: 
     navigation.navigate("Dish", { restraurentId, dishId });
   }
   const onAddToCart = (restraurentId: string, dishId: string) => {
-    console.log("Added to cart");
+    navigation.navigate("Cart", { restraurentId, dishId });
   }
 
   if (variant === DISH_VARIANT.card) {
