@@ -1,23 +1,4 @@
-export type DishType = "veg" | "non-veg";
-
-export type Dish = {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  deliveryTime: string;
-  description: string;
-  type: DishType;
-  available: boolean;
-};
-
-export type Restraurent = {
-  id: string;
-  name: string;
-  location: string;
-  isOpen: boolean;
-  dishes: Dish[];
-};
+import { Restraurent } from "../types/restraurent";
 
 export const RESTRAURENTS: Restraurent[] = [
   {

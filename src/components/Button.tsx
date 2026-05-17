@@ -10,7 +10,7 @@ export const Button: FC<{ label: string, onPress: () => void }> = ({ label, onPr
     >
       <Text
         style={{
-          color: COLORS.wine,
+          color: "#FFFFFF",
           fontSize: 17,
           fontWeight: "800"
         }}
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: COLORS.orange,
-    boxShadow: `0 10px 24px ${COLORS.orange}`,
+    backgroundColor: COLORS.ink,
+    boxShadow: "0 10px 24px rgba(31, 23, 21, 0.18)",
     transform: [{ scale: 1 }],
   },
   buttonPresses: {

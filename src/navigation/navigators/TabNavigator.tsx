@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { HomeScreen } from '../screens/Home';
 import SearchScreen from '../screens/Search';
 import OrdersScreen from '../screens/Orders';
@@ -26,37 +27,52 @@ const TabIcon = ({ focused, routeName }: { focused: boolean; routeName: TabName 
       <Ionicons
         name={focused ? activeIcon : inactiveIcon}
         size={19}
-        color={focused ? '#FFFFFF' : COLORS.clay}
+        color={focused ? COLORS.orange : COLORS.clay}
       />
     </View>
   );
 };
 
 export const TabNavigator = () => {
+  const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
+  const tabBarWidth = 300;
+  const tabBarLeft = (width - tabBarWidth) / 2;
+
   return (
-    <Tab.Navigator screenOptions={({ route }) => ({
-      headerShown: false,
-      tabBarShowLabel: false,
-      tabBarStyle: styles.tabBar,
-      tabBarItemStyle: styles.tabItem,
-      tabBarHideOnKeyboard: true,
-      tabBarIcon: ({ focused }) => (
-        <TabIcon focused={focused} routeName={route.name as TabName} />
-      ),
-    })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Orders" component={OrdersScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+    <View style={styles.navigatorShell}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          headerShown: false,
+          sceneStyle: styles.sceneContainer,
+          tabBarShowLabel: false,
+          tabBarStyle: [styles.tabBar, { bottom: insets.bottom + 18 }, { width: tabBarWidth, transform: [{ translateX: tabBarLeft }] }],
+          tabBarItemStyle: styles.tabItem,
+          tabBarHideOnKeyboard: true,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} routeName={route.name as TabName} />
+          ),
+        })}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="Orders" component={OrdersScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+      </Tab.Navigator>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
+  navigatorShell: {
+    flex: 1,
+    backgroundColor: COLORS.clay,
+  },
+  sceneContainer: {
+    backgroundColor: COLORS.clay,
+    display: 'flex',
+  },
   tabBar: {
-    alignSelf: 'center',
-    bottom: 24,
-    width: 300,
+    position: 'absolute',
     height: 65,
     borderRadius: 999,
     backgroundColor: COLORS.peach,
@@ -77,8 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.peach,
   },
   iconWrapActive: {
-    backgroundColor: COLORS.ink,
+    backgroundColor: COLORS.wine,
     boxShadow: 'none',
-
   },
 });
