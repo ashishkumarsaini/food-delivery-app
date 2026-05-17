@@ -3,6 +3,7 @@ import { COLORS } from "../../constants/theme";
 import { Image, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenWrapper } from "../../components/Screen";
 
 type RootStackParamList = {
   GetStarted: undefined;
@@ -17,14 +18,13 @@ export function GetStartedScreen() {
   };
 
   return (
-    <>
+    <ScreenWrapper>
       <View
         style={{
           flexGrow: 1,
           paddingHorizontal: 24,
           paddingTop: 58,
           paddingBottom: 28,
-          backgroundColor: "#FFF8F5",
         }}
       >
         <View style={{ flex: 1, justifyContent: "center", gap: 30 }}>
@@ -69,6 +69,6 @@ export function GetStartedScreen() {
           <Button onPress={onPress} label="Get Started" />
         </View>
       </View>
-    </>
+    </ScreenWrapper>
   );
 }

@@ -1,15 +1,9 @@
-import { ScrollView, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { ScreenWrapper } from "../../components/Screen";
 
 export function HomeScreen() {
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      contentContainerStyle={{
-        flexGrow: 1,
-        padding: 24,
-        backgroundColor: "#FFF8F5",
-      }}
-    >
+    <ScreenWrapper>
       <View style={{ gap: 8 }}>
         <Text style={{ color: "#130303", fontSize: 28, fontWeight: "800" }}>
           Welcome
@@ -18,6 +12,6 @@ export function HomeScreen() {
           Start building the food delivery home experience here.
         </Text>
       </View>
-    </ScrollView>
+    </ScreenWrapper>
   );
 }
