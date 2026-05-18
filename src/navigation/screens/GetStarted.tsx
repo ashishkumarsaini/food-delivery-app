@@ -3,16 +3,13 @@ import { COLORS } from "../../constants/theme";
 import { Image, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import Feather from '@expo/vector-icons/Feather';
 import { CustomText } from "../../components/text";
-import { useAuth } from "../../providers/auth-provider";
 
 export function GetStartedScreen() {
   const navigation = useNavigation<any>();
-  const { isAuthenticated } = useAuth();
 
   const onPress = () => {
-    navigation.navigate(isAuthenticated ? "Home" : "Login");
+    navigation.navigate("Home");
   };
 
   return (
@@ -43,14 +40,12 @@ export function GetStartedScreen() {
         <Button onPress={onPress} >
           <CustomText
             style={{
-              color: "#FFFFFF",
-              fontSize: 17,
-              fontWeight: "800"
+              color: COLORS.peach,
+              fontSize: 20,
             }}
           >
             Get Started
           </CustomText>
-          <Feather name="arrow-right-circle" size={24} color="#FFFFFF" />
         </Button>
       </View>
     </View >
@@ -86,7 +81,6 @@ const styles = StyleSheet.create({
   title: {
     color: COLORS.ink,
     fontSize: 33,
-    fontWeight: "900",
     letterSpacing: 0,
     lineHeight: 39,
     textAlign: "center",

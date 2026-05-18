@@ -3,13 +3,16 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { RESTRAURENTS } from "../../../constants/restraurents";
 import { DishGallery } from "./components/dish-gallery";
 import { DishInfo } from "./components/dish-info";
-import { AddToOrder } from "./components/add-to-order";
+import { Recommendation } from "./components/add-to-order";
 import { DishCheckoutBar } from "./components/dish-checkout-bar";
 import { ScreenWrapper } from "../../../components/Screen";
+import { useCart } from "../../../providers/cart-provider";
+import { Dish } from "../../../types/dish";
 
 export function DishScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
+  const { addToCart } = useCart();
 
   const { restraurentId, dishId } = route.params;
 
@@ -20,6 +23,11 @@ export function DishScreen() {
   if (!restraurent || !dish) {
     return null;
   }
+
+  const handleAddToCart = () => {
+    addToCart(restraurentId, dish)
+    navigation.navigate("Cart");
+  };
 
   return (
     <ScreenWrapper>
@@ -33,12 +41,12 @@ export function DishScreen() {
         />
         <View style={styles.content}>
           <DishInfo dish={dish} restraurent={restraurent} />
-          <AddToOrder dishes={addOns} restraurentId={restraurentId} restraurentName={restraurent.name} />
+          <Recommendation dishes={addOns} restraurentId={restraurentId} restraurentName={restraurent.name} />
         </View>
       </ScrollView>
       <DishCheckoutBar
         price={dish.price}
-        onAddToCart={() => navigation.navigate("Cart")}
+        onAddToCart={handleAddToCart}
       />
     </ScreenWrapper>
   );

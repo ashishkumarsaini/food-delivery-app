@@ -27,10 +27,8 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontWeight: "500"
   },
   location: {
     fontSize: 14,
-    fontWeight: "600",
   }
 })

@@ -4,7 +4,7 @@ import { COLORS } from "../../../../constants/theme";
 import { DishTile } from "../../../../components/tiles/dish";
 import { CustomText } from "../../../../components/text";
 
-export function AddToOrder({ dishes, restraurentName, restraurentId }: { dishes: Dish[], restraurentName: string, restraurentId: string }) {
+export function Recommendation({ dishes, restraurentName, restraurentId }: { dishes: Dish[], restraurentName: string, restraurentId: string }) {
   return (
     <View style={styles.container}>
       <CustomText style={styles.heading}>You may also like</CustomText>
@@ -58,12 +58,10 @@ const styles = StyleSheet.create({
     marginTop: 8,
     color: COLORS.ink,
     fontSize: 13,
-    fontWeight: "500",
   },
   price: {
     marginTop: 3,
     color: COLORS.clay,
     fontSize: 11,
-    fontWeight: "500",
   },
 });

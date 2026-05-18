@@ -57,7 +57,7 @@ export const LoginScreen = () => {
           <Button onPress={handleLogin}>
             <CustomText style={styles.primaryText}>Login</CustomText>
           </Button>
-          <Pressable style={styles.linkButton} onPress={() => navigation.navigate("Register")}>
+          <Pressable style={styles.linkButton} onPress={() => navigation.navigate("Home")}>
             <CustomText style={styles.linkMuted}>New here?</CustomText>
             <CustomText style={styles.linkText}>Create account</CustomText>
           </Pressable>
