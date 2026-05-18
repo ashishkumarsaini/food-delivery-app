@@ -1,13 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
+import { CustomText } from '../../../components/text'
 
 export function RestraurentScreen() {
   return (
     <View>
-      <Text>RestraurentScreen</Text>
+      <CustomText>RestraurentScreen</CustomText>
     </View>
   )
-}
-
-
-const styles = StyleSheet.create({})
+};

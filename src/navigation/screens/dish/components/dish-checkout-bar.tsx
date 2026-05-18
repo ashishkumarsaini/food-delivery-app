@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { Pressable, StyleSheet, useWindowDimensions, View } from "react-native";
 import { COLORS } from "../../../../constants/theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { CustomText } from "../../../../components/text";
 
 export function DishCheckoutBar({
   price,
@@ -18,7 +19,7 @@ export function DishCheckoutBar({
   return (
     <View style={[styles.container, { bottom: insets.bottom + 18 }]}>
       <Pressable onPress={onAddToCart} style={[styles.bar, { width: tabBarWidth, transform: [{ translateX: tabBarLeft }] }]}>
-        <Text style={styles.price}>Rs. {price.toFixed(2)}</Text>
+        <CustomText style={styles.price}>Rs. {price.toFixed(2)}</CustomText>
         <View style={styles.icon}>
           <FontAwesome name="cart-plus" size={25} color={COLORS.ink} />
         </View>

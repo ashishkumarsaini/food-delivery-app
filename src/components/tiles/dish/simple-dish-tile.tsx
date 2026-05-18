@@ -1,8 +1,9 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, View } from 'react-native'
 import React, { FC } from 'react'
 import { Dish } from '../../../types/dish';
 import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from '../../../constants/theme';
+import { CustomText } from '../../text';
 
 const SimpleDishTile: FC<{
   dish: Dish, restraurentId: string,
@@ -16,8 +17,8 @@ const SimpleDishTile: FC<{
       </Pressable>
       <Image source={{ uri: dish.image }} style={styles.image} />
       <View>
-        <Text style={styles.name}>{dish.name}</Text>
-        <Text style={styles.price}>Rs. {dish.price}.00</Text>
+        <CustomText style={styles.name}>{dish.name}</CustomText>
+        <CustomText style={styles.price}>Rs. {dish.price}.00</CustomText>
       </View>
     </Pressable>
   )

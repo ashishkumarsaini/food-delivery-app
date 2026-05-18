@@ -1,8 +1,9 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, View } from 'react-native'
 import React, { FC } from 'react'
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Dish } from '../../../types/dish';
 import { COLORS } from '../../../constants/theme';
+import { CustomText } from '../../text';
 
 const DetailedDishTile: FC<{
   dish: Dish;
@@ -22,17 +23,17 @@ const DetailedDishTile: FC<{
         <View style={styles.imageShade} />
         <View style={styles.ratingChip}>
           <Ionicons name="star" size={12} color="#FFD53D" />
-          <Text style={styles.ratingText}>4.8</Text>
+          <CustomText style={styles.ratingText}>4.8</CustomText>
         </View>
       </View>
 
       <View style={styles.foodContent}>
         <View style={styles.titleRow}>
           <View style={{ flex: 1 }}>
-            <Text numberOfLines={1} style={styles.foodName}>{name}</Text>
-            <Text numberOfLines={1} style={styles.restraurentName}>{restraurentName}</Text>
+            <CustomText numberOfLines={1} style={styles.foodName}>{name}</CustomText>
+            <CustomText numberOfLines={1} style={styles.restraurentName}>{restraurentName}</CustomText>
           </View>
-          <Text style={styles.price}>${price.toFixed(0)}</Text>
+          <CustomText style={styles.price}>${price.toFixed(0)}</CustomText>
         </View>
       </View>
     </Pressable>

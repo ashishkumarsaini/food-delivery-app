@@ -1,9 +1,10 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-import { Image, Pressable, StyleSheet, Text, View, ScrollView } from "react-native";
+import { Image, Pressable, StyleSheet, View, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { RESTRAURENTS } from "../../constants/restraurents";
 import { COLORS } from "../../constants/theme";
+import { CustomText } from "../../components/text";
 
 const cartItems = RESTRAURENTS.map((restraurent, index) => ({
   restraurent,
@@ -33,7 +34,7 @@ export default function CartScreen() {
           <Pressable style={styles.headerButton} onPress={() => navigation.goBack()}>
             <Ionicons name="chevron-back" size={20} color="#FFFFFF" />
           </Pressable>
-          <Text style={styles.headerTitle}>Cart</Text>
+          <CustomText style={styles.headerTitle}>Cart</CustomText>
           <Pressable style={styles.headerButton}>
             <Ionicons name="ellipsis-vertical" size={18} color="#FFFFFF" />
           </Pressable>
@@ -45,20 +46,20 @@ export default function CartScreen() {
               <Image source={{ uri: dish.image }} style={styles.itemImage} />
               <View style={{ flex: 1 }}>
                 <View style={styles.itemTitleRow}>
-                  <Text style={styles.itemTitle}>{dish.name}</Text>
+                  <CustomText style={styles.itemTitle}>{dish.name}</CustomText>
                   <View style={styles.ratingRow}>
                     <Ionicons name="star" size={14} color="#FFD53D" />
-                    <Text style={styles.ratingText}>{rating}</Text>
+                    <CustomText style={styles.ratingText}>{rating}</CustomText>
                   </View>
                 </View>
-                <Text style={styles.itemSource}>By {restraurent.name}</Text>
+                <CustomText style={styles.itemSource}>By {restraurent.name}</CustomText>
                 <View style={styles.itemBottomRow}>
-                  <Text style={styles.itemPrice}>${dish.price.toFixed(2)}</Text>
+                  <CustomText style={styles.itemPrice}>${dish.price.toFixed(2)}</CustomText>
                   <View style={styles.stepper}>
                     <Pressable style={styles.stepButton}>
                       <Ionicons name="remove" size={13} color="#FFFFFF" />
                     </Pressable>
-                    <Text style={styles.quantity}>{quantity}</Text>
+                    <CustomText style={styles.quantity}>{quantity}</CustomText>
                     <Pressable style={styles.stepButtonLight}>
                       <Ionicons name="add" size={13} color={COLORS.ink} />
                     </Pressable>
@@ -72,7 +73,7 @@ export default function CartScreen() {
         <View style={styles.summaryCard}>
           <View style={styles.voucherBox}>
             <Ionicons name="ticket" size={17} color="#FFFFFF" />
-            <Text style={styles.voucherText}>Enter your voucher code</Text>
+            <CustomText style={styles.voucherText}>Enter your voucher code</CustomText>
           </View>
 
           <SummaryRow label="Subtotal:" value={`$${subtotal.toFixed(2)}`} />
@@ -81,9 +82,9 @@ export default function CartScreen() {
           <SummaryRow label="Total Amount:" value={`$${total.toFixed(2)}`} strong />
 
           <View style={styles.checkoutBar}>
-            <Text style={styles.checkoutPrice}>${total.toFixed(2)}</Text>
+            <CustomText style={styles.checkoutPrice}>${total.toFixed(2)}</CustomText>
             <Pressable style={styles.checkoutButton}>
-              <Text style={styles.checkoutText}>Checkout</Text>
+              <CustomText style={styles.checkoutText}>Checkout</CustomText>
             </Pressable>
           </View>
         </View>
@@ -95,8 +96,8 @@ export default function CartScreen() {
 function SummaryRow({ label, value, strong }: { label: string; value: string; strong?: boolean }) {
   return (
     <View style={styles.summaryRow}>
-      <Text style={[styles.summaryLabel, strong && styles.summaryStrong]}>{label}</Text>
-      <Text style={[styles.summaryValue, strong && styles.summaryStrong]}>{value}</Text>
+      <CustomText style={[styles.summaryLabel, strong && styles.summaryStrong]}>{label}</CustomText>
+      <CustomText style={[styles.summaryValue, strong && styles.summaryStrong]}>{value}</CustomText>
     </View>
   );
 }

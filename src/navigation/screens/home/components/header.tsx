@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, View } from 'react-native'
 import { COLORS } from '../../../../constants/theme';
+import { CustomText } from "../../../../components/text";
 
 const HomeHeader = () => {
   const navigation = useNavigation<any>();
@@ -10,14 +11,14 @@ const HomeHeader = () => {
       <View>
         <View style={styles.locationRow}>
           <Ionicons name="location" size={13} color={COLORS.peach} />
-          <Text style={styles.eyebrow}>Location</Text>
+          <CustomText style={styles.eyebrow}>Location</CustomText>
         </View>
-        <Text style={styles.location}>AI Safa Street, AI Wasi</Text>
+        <CustomText style={styles.location}>AI Safa Street, AI Wasi</CustomText>
       </View>
       <Pressable style={styles.bagButton} onPress={() => navigation.navigate("Cart")}>
         <Ionicons name="bag" size={18} color={COLORS.ink} />
         <View style={styles.badge}>
-          <Text style={styles.badgeText}>2</Text>
+          <CustomText style={styles.badgeText}>2</CustomText>
         </View>
       </Pressable>
     </View>

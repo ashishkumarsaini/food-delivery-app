@@ -1,17 +1,18 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '../constants/theme';
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { CustomText } from './text';
 
 const SearchBar = () => {
   return (
     <View style={styles.searchRow}>
       <View style={styles.searchBox}>
         <Ionicons name="search" size={18} color={COLORS.peach} />
-        <Text style={styles.searchText}>Search</Text>
+        <CustomText style={styles.searchText}>Search</CustomText>
       </View>
       <Pressable style={styles.filterButton}>
-        <Text style={styles.filterText}>Filter</Text>
+        <CustomText style={styles.filterText}>Filter</CustomText>
         <Ionicons name="options" size={18} color="#FFFFFF" />
       </Pressable>
     </View>

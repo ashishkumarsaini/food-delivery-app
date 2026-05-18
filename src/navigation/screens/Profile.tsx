@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { ScreenWrapper } from '../../components/Screen'
+import { CustomText } from '../../components/text'
 
 const ProfileScreen = () => {
   return (
     <ScreenWrapper>
-      <Text>ProfileScreen</Text>
+      <CustomText>ProfileScreen</CustomText>
     </ScreenWrapper>
   )
 }

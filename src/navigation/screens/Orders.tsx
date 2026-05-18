@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { ScreenWrapper } from '../../components/Screen'
+import { CustomText } from '../../components/text'
 
 const OrdersScreen = () => {
   return (
     <ScreenWrapper>
-      <Text>Orders</Text>
+      <CustomText>Orders</CustomText>
     </ScreenWrapper>
   )
 }

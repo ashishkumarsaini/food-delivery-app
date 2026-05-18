@@ -1,13 +1,13 @@
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Dish } from "../../../../types/dish";
 import { COLORS } from "../../../../constants/theme";
 import { DishTile } from "../../../../components/tiles/dish";
+import { CustomText } from "../../../../components/text";
 
 export function AddToOrder({ dishes, restraurentName, restraurentId }: { dishes: Dish[], restraurentName: string, restraurentId: string }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>You may also like</Text>
+      <CustomText style={styles.heading}>You may also like</CustomText>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

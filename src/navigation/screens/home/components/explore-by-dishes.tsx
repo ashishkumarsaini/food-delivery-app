@@ -1,12 +1,13 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { RESTRAURENTS } from '../../../../constants/restraurents'
 import { DISH_VARIANT, DishTile } from '../../../../components/tiles/dish'
+import { CustomText } from '../../../../components/text'
 
 const ExploreByDishes = () => {
   return (
     <View style={styles.cardList}>
-      <Text style={styles.title}>Popular Dishes</Text>
+      <CustomText style={styles.title}>Popular Dishes</CustomText>
       {RESTRAURENTS.map((restraurent) => (
         <ScrollView key={restraurent.id} horizontal contentContainerStyle={{ gap: 10 }} showsHorizontalScrollIndicator={false}>
           {restraurent.dishes.map((dish) => (

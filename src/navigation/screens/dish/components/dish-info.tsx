@@ -1,10 +1,11 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Dish } from "../../../../types/dish";
 import { Restraurent } from "../../../../types/restraurent";
 import { COLORS } from "../../../../constants/theme";
 import { InfoPill } from "./info-pile";
 import { Link } from "@react-navigation/native";
+import { CustomText } from "../../../../components/text";
 
 export function DishInfo({ dish, restraurent }: { dish: Dish; restraurent: Restraurent }) {
   return (
@@ -17,14 +18,14 @@ export function DishInfo({ dish, restraurent }: { dish: Dish; restraurent: Restr
             style={styles.restaurant}>
             By {restraurent.name}
           </Link>
-          <Text style={styles.title}>{dish.name}</Text>
+          <CustomText style={styles.title}>{dish.name}</CustomText>
         </View>
         <View style={styles.priceBadge}>
-          <Text style={styles.price}>${dish.price.toFixed(2)}</Text>
+          <CustomText style={styles.price}>${dish.price.toFixed(2)}</CustomText>
         </View>
       </View>
 
-      <Text style={styles.description}>{dish.description}</Text>
+      <CustomText style={styles.description}>{dish.description}</CustomText>
 
       <View style={styles.detailsGrid}>
         <InfoPill icon="time-outline" label="Delivery" value={dish.deliveryTime} />
@@ -50,8 +51,8 @@ export function DishInfo({ dish, restraurent }: { dish: Dish; restraurent: Restr
           <Ionicons name="location-outline" size={18} color={COLORS.orange} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={styles.locationLabel}>Kitchen location</Text>
-          <Text style={styles.locationText}>{restraurent.location}</Text>
+          <CustomText style={styles.locationLabel}>Kitchen location</CustomText>
+          <CustomText style={styles.locationText}>{restraurent.location}</CustomText>
         </View>
       </View>
     </View>

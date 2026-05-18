@@ -1,9 +1,10 @@
 import { Button } from "../../components/Button";
 import { COLORS } from "../../constants/theme";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import Feather from '@expo/vector-icons/Feather';
+import { CustomText } from "../../components/text";
 
 export function GetStartedScreen() {
   const navigation = useNavigation<any>();
@@ -25,20 +26,20 @@ export function GetStartedScreen() {
             style={styles.image}
           />
           <View style={styles.textContainer}>
-            <Text
+            <CustomText
               style={styles.title}
             >
               Food Delivery
-            </Text>
-            <Text
+            </CustomText>
+            <CustomText
               style={styles.description}
             >
               Order warm meals, fresh snacks, and your favorite cravings from nearby kitchens.
-            </Text>
+            </CustomText>
           </View>
         </View>
         <Button onPress={onPress} >
-          <Text
+          <CustomText
             style={{
               color: "#FFFFFF",
               fontSize: 17,
@@ -46,7 +47,7 @@ export function GetStartedScreen() {
             }}
           >
             Get Started
-          </Text>
+          </CustomText>
           <Feather name="arrow-right-circle" size={24} color="#FFFFFF" />
         </Button>
       </View>

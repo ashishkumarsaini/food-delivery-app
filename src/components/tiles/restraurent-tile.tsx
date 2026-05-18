@@ -1,14 +1,15 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import React, { FC } from 'react'
 import { Restraurent } from '../../types/restraurent'
+import { CustomText } from '../text'
 
 export const RestraurentTile: FC<{ restraurent: Restraurent }> = ({ restraurent }) => {
   const { name, image, location } = restraurent
   return (
     <View>
       <Image src={image} style={styles.image} />
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.location}>{location}</Text>
+      <CustomText style={styles.name}>{name}</CustomText>
+      <CustomText style={styles.location}>{location}</CustomText>
     </View>
   )
 }

@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
+import { StyleSheet, View, Pressable, Image } from 'react-native'
 import React from 'react'
 import { COLORS } from '../constants/theme';
 import { RESTRAURENTS } from '../constants/restraurents';
+import { CustomText } from './text';
 
 const featured = RESTRAURENTS.flatMap((restraurent) =>
   restraurent.dishes.map((dish) => ({ restraurent, dish }))
@@ -12,10 +13,10 @@ const PromoBanner = () => {
   return (
     <View style={styles.promoCard}>
       <View style={{ flex: 1, gap: 10 }}>
-        <Text style={styles.promoTitle}>Gonna Be a Good Day!</Text>
-        <Text style={styles.promoCopy}>Free delivery, lover fees, & 10% cashback, pickup!</Text>
+        <CustomText style={styles.promoTitle}>Gonna Be a Good Day!</CustomText>
+        <CustomText style={styles.promoCopy}>Free delivery, lover fees, & 10% cashback, pickup!</CustomText>
         <Pressable style={styles.orderButton}>
-          <Text style={styles.orderButtonText}>Order Now</Text>
+          <CustomText style={styles.orderButtonText}>Order Now</CustomText>
         </Pressable>
       </View>
       <Image source={{ uri: featured[0].dish.image }} style={styles.promoImage} />

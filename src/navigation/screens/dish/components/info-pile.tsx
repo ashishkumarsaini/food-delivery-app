@@ -1,6 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { COLORS } from "../../../../constants/theme";
+import { CustomText } from "../../../../components/text";
 
 export function InfoPill({ icon, label, value }: { icon: keyof typeof Ionicons.glyphMap; label: string; value: string }) {
   return (
@@ -9,8 +10,8 @@ export function InfoPill({ icon, label, value }: { icon: keyof typeof Ionicons.g
         <Ionicons name={icon} size={17} color={COLORS.orange} />
       </View>
       <View style={{ flex: 1 }}>
-        <Text style={styles.infoLabel}>{label}</Text>
-        <Text numberOfLines={1} style={styles.infoValue}>{value}</Text>
+        <CustomText style={styles.infoLabel}>{label}</CustomText>
+        <CustomText numberOfLines={1} style={styles.infoValue}>{value}</CustomText>
       </View>
     </View>
   );

@@ -1,12 +1,13 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { RESTRAURENTS } from '../../../../constants/restraurents'
 import { RestraurentTile } from '../../../../components/tiles/restraurent-tile'
+import { CustomText } from '../../../../components/text'
 
 const ExploreByPlaces = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Places</Text>
+      <CustomText style={styles.title}>Places</CustomText>
       <ScrollView horizontal contentContainerStyle={{ gap: 10 }} showsHorizontalScrollIndicator={false}>
         {RESTRAURENTS.map((restraurent) => (
           <RestraurentTile key={restraurent.id} restraurent={restraurent} />
