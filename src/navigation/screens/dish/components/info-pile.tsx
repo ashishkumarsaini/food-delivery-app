@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     gap: 10,
     borderRadius: 10,
     padding: 11,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.peach,
   },
   infoIcon: {
     width: 34,
@@ -34,17 +34,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: "#FFF4EC",
+    backgroundColor: COLORS.peach,
   },
   infoLabel: {
     color: COLORS.clay,
-    fontSize: 11,
-    fontWeight: "600",
+    fontSize: 15,
   },
   infoValue: {
     marginTop: 3,
     color: COLORS.ink,
-    fontSize: 13,
-    fontWeight: "800",
+    fontSize: 15,
   },
 });

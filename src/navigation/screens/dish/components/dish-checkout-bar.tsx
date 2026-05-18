@@ -13,7 +13,7 @@ export function DishCheckoutBar({
 }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
-  const tabBarWidth = 300;
+  const tabBarWidth = 340;
   const tabBarLeft = (width - tabBarWidth) / 2;
 
   return (
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     flex: 1,
     color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: "600",
     textAlign: "center",
   },
   icon: {
@@ -60,6 +59,5 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FFFFFF",
     fontSize: 14,
-    fontWeight: "600",
   },
 });

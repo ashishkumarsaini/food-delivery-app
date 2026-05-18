@@ -23,12 +23,12 @@ export function AddToOrder({ dishes, restraurentName, restraurentId }: { dishes:
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
     gap: 12,
   },
   heading: {
     color: COLORS.ink,
     fontSize: 21,
-    fontWeight: "500",
   },
   list: {
     gap: 12,

@@ -2,22 +2,36 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { GetStartedScreen } from "../screens/GetStarted";
 import { TabNavigator } from "./TabNavigator";
-import { DishScreen, RestraurentScreen } from "../screens";
+import { DishScreen, RestraurentScreen, LoginScreen, RegisterScreen } from "../screens";
 import CartScreen from "../screens/Cart";
+import { useAuth } from "../../providers/auth-provider";
 
 const Stack = createNativeStackNavigator();
 
 export const RootStack = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         headerShown: false,
       }}>
         <Stack.Screen name="GetStarted" component={GetStartedScreen} />
-        <Stack.Screen name="Home" component={TabNavigator} />
-        <Stack.Screen name="Dish" component={DishScreen} />
-        <Stack.Screen name="Restraurent" component={RestraurentScreen} />
-        <Stack.Screen name="Cart" component={CartScreen} />
+        {
+          isAuthenticated ? (
+            <>
+              <Stack.Screen name="Home" component={TabNavigator} />
+              <Stack.Screen name="Dish" component={DishScreen} />
+              <Stack.Screen name="Restraurent" component={RestraurentScreen} />
+              <Stack.Screen name="Cart" component={CartScreen} />
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen name="Register" component={RegisterScreen} />
+            </>
+          )
+        }
       </Stack.Navigator>
     </NavigationContainer>
   )

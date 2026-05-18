@@ -8,8 +8,10 @@ export const RestraurentTile: FC<{ restraurent: Restraurent }> = ({ restraurent 
   return (
     <View>
       <Image src={image} style={styles.image} />
-      <CustomText style={styles.name}>{name}</CustomText>
-      <CustomText style={styles.location}>{location}</CustomText>
+      <View style={styles.container}>
+        <CustomText style={styles.name}>{name}</CustomText>
+        <CustomText style={styles.location}>{location}</CustomText>
+      </View>
     </View>
   )
 }
@@ -19,6 +21,9 @@ const styles = StyleSheet.create({
     width: 250,
     height: 150,
     borderRadius: 10,
+  },
+  container: {
+    paddingVertical: 15,
   },
   name: {
     fontSize: 16,

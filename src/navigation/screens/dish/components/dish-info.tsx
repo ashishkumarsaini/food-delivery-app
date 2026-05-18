@@ -71,14 +71,12 @@ const styles = StyleSheet.create({
   title: {
     color: COLORS.ink,
     fontSize: 29,
-    fontWeight: "600",
     lineHeight: 36,
   },
   restaurant: {
     marginBottom: 10,
     color: COLORS.clay,
     fontSize: 15,
-    fontWeight: "700",
   },
   priceBadge: {
     borderRadius: 999,
@@ -89,12 +87,10 @@ const styles = StyleSheet.create({
   price: {
     color: COLORS.ink,
     fontSize: 14,
-    fontWeight: "800",
   },
   description: {
     color: COLORS.wine,
-    fontSize: 14,
-    fontWeight: "500",
+    fontSize: 18,
     lineHeight: 20,
   },
   detailsGrid: {
@@ -121,13 +117,11 @@ const styles = StyleSheet.create({
   },
   locationLabel: {
     color: COLORS.clay,
-    fontSize: 11,
-    fontWeight: "600",
+    fontSize: 15,
   },
   locationText: {
     marginTop: 3,
     color: COLORS.ink,
-    fontSize: 13,
-    fontWeight: "800",
+    fontSize: 15,
   },
 });

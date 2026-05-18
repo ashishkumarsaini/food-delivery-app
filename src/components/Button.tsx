@@ -1,11 +1,11 @@
 import { COLORS } from '../constants/theme'
 import React, { FC, ReactNode } from 'react'
-import { Pressable, StyleSheet, Text } from 'react-native'
+import { Pressable, StyleSheet, ViewStyle } from 'react-native'
 
-export const Button: FC<{ children: ReactNode, onPress: () => void }> = ({ children, onPress }) => {
+export const Button: FC<{ children: ReactNode, onPress: () => void, buttonStyles?: ViewStyle }> = ({ children, onPress, buttonStyles }) => {
   return (
     <Pressable
-      style={({ pressed }) => StyleSheet.compose(styles.button, pressed && styles.buttonPresses)}
+      style={({ pressed }) => StyleSheet.flatten([styles.button, pressed && styles.buttonPresses, buttonStyles])}
       onPress={onPress}
     >
       {children}

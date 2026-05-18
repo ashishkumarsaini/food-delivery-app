@@ -5,12 +5,14 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import Feather from '@expo/vector-icons/Feather';
 import { CustomText } from "../../components/text";
+import { useAuth } from "../../providers/auth-provider";
 
 export function GetStartedScreen() {
   const navigation = useNavigation<any>();
+  const { isAuthenticated } = useAuth();
 
   const onPress = () => {
-    navigation.replace("Home");
+    navigation.navigate(isAuthenticated ? "Home" : "Login");
   };
 
   return (
