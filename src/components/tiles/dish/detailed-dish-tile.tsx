@@ -78,10 +78,9 @@ const styles = StyleSheet.create({
   ratingText: {
     color: "#FFFFFF",
     fontSize: 11,
-    fontWeight: "700",
   },
   foodContent: {
-    padding: 14,
+    paddingVertical: 14,
     gap: 12,
   },
   titleRow: {
@@ -92,7 +91,6 @@ const styles = StyleSheet.create({
   foodName: {
     color: COLORS.ink,
     fontSize: 17,
-    fontWeight: "500",
   },
   restraurentName: {
     marginTop: 4,
@@ -102,7 +100,6 @@ const styles = StyleSheet.create({
   price: {
     color: COLORS.ink,
     fontSize: 13,
-    fontWeight: "500",
   },
   metaRow: {
     flexDirection: "row",
@@ -137,7 +134,6 @@ const styles = StyleSheet.create({
   metaText: {
     color: COLORS.clay,
     fontSize: 11,
-    fontWeight: "800",
   },
   footerRow: {
     flexDirection: "row",
@@ -147,7 +143,6 @@ const styles = StyleSheet.create({
   availability: {
     color: "#2F7D4E",
     fontSize: 12,
-    fontWeight: "900",
   },
   unavailable: {
     color: COLORS.clay,

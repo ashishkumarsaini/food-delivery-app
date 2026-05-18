@@ -5,3 +5,10 @@ export const COLORS = {
   orange: "#F5853F",
   peach: "#FFCDBC",
 };
+
+export const FONTS = {
+  regular: "Fraunces_400Regular",
+  medium: "Fraunces_500Medium",
+  semiBold: "Fraunces_600SemiBold",
+  bold: "Fraunces_700Bold",
+};

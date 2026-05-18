@@ -11,12 +11,12 @@ const SimpleDishTile: FC<{
   onAddToCart: (restraurentId: string, dishId: string) => void
 }> = ({ dish, restraurentId, onClick, onAddToCart }) => {
   return (
-    <Pressable onPress={() => onClick(restraurentId, dish.id)}>
-      <Pressable onPress={() => onAddToCart(restraurentId, dish.id)}>
-        <MaterialIcons name="add-circle" size={24} color={COLORS.wine} style={styles.addButton} />
+    <Pressable style={styles.container} onPress={() => onClick(restraurentId, dish.id)}>
+      <Pressable style={styles.addButton} onPress={() => onAddToCart(restraurentId, dish.id)}>
+        <MaterialIcons name="add-circle" size={24} color={COLORS.wine} />
       </Pressable>
       <Image source={{ uri: dish.image }} style={styles.image} />
-      <View>
+      <View style={styles.content}>
         <CustomText style={styles.name}>{dish.name}</CustomText>
         <CustomText style={styles.price}>Rs. {dish.price}.00</CustomText>
       </View>
@@ -27,6 +27,10 @@ const SimpleDishTile: FC<{
 export default SimpleDishTile
 
 const styles = StyleSheet.create({
+  container: {
+    width: 150,
+    borderRadius: 10,
+  },
   image: {
     width: 150,
     height: 150,
@@ -34,18 +38,20 @@ const styles = StyleSheet.create({
   },
   addButton: {
     position: 'absolute',
-    top: 5,
+    zIndex: 99,
     right: 5,
-    zIndex: 100,
+    top: 5,
     backgroundColor: COLORS.peach,
     borderRadius: 999,
   },
+  content: {
+    paddingVertical: 14,
+    gap: 4,
+  },
   name: {
     fontSize: 16,
-    fontWeight: "500",
   },
   price: {
     fontSize: 14,
-    fontWeight: "600",
   }
 })

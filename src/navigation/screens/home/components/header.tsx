@@ -6,17 +6,19 @@ import { CustomText } from "../../../../components/text";
 
 const HomeHeader = () => {
   const navigation = useNavigation<any>();
+
   return (
     <View style={styles.header}>
-      <View>
+      <View style={styles.copy}>
         <View style={styles.locationRow}>
-          <Ionicons name="location" size={13} color={COLORS.peach} />
-          <CustomText style={styles.eyebrow}>Location</CustomText>
+          <Ionicons name="location-outline" size={25} color={COLORS.orange} />
+          <CustomText numberOfLines={1} style={styles.location}>Chandigarh, India</CustomText>
+          <Ionicons name="chevron-down" size={14} color={COLORS.clay} />
         </View>
-        <CustomText style={styles.location}>AI Safa Street, AI Wasi</CustomText>
       </View>
+
       <Pressable style={styles.bagButton} onPress={() => navigation.navigate("Cart")}>
-        <Ionicons name="bag" size={18} color={COLORS.ink} />
+        <Ionicons name="bag-handle-outline" size={21} color={COLORS.ink} />
         <View style={styles.badge}>
           <CustomText style={styles.badgeText}>2</CustomText>
         </View>
@@ -32,45 +34,44 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    gap: 18,
+  },
+  copy: {
+    flex: 1,
   },
   locationRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
-  },
-  eyebrow: {
-    color: COLORS.peach,
-    fontSize: 12,
-    opacity: 0.75,
+    gap: 5,
+    marginTop: 4,
   },
   location: {
-    marginTop: 5,
+    flexShrink: 1,
     color: COLORS.ink,
-    fontSize: 14,
-    fontWeight: "700",
+    fontSize: 19,
   },
   bagButton: {
-    width: 42,
-    height: 42,
+    width: 46,
+    height: 46,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.peach,
   },
   badge: {
     position: "absolute",
-    top: -3,
-    right: -2,
-    width: 17,
-    height: 17,
+    top: 2,
+    right: 1,
+    width: 18,
+    height: 18,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 999,
     backgroundColor: COLORS.orange,
   },
   badgeText: {
-    color: COLORS.ink,
+    color: "#FFFFFF",
     fontSize: 10,
-    fontWeight: "900",
+    fontWeight: "700",
   },
 })

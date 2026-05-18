@@ -9,6 +9,7 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
+    "@expo-google-fonts/fraunces": "^0.4.1",
     "@expo/metro-runtime": "~55.0.6",
     "@react-navigation/bottom-tabs": "^7.15.12",
     "@react-navigation/native": "^7.2.3",
@@ -16,6 +17,7 @@
     "expo": "^55.0.7",
     "expo-asset": "~55.0.9",
     "expo-dev-client": "~55.0.17",
+    "expo-font": "^55.0.7",
     "expo-splash-screen": "~55.0.11",
     "react": "19.2.0",
     "react-dom": "19.2.0",

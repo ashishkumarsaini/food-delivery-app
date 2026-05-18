@@ -31,19 +31,17 @@ const styles = StyleSheet.create({
     minHeight: 124,
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 16,
     borderRadius: 10,
     padding: 14,
-    backgroundColor: "#FFD53D",
+    backgroundColor: COLORS.wine,
     overflow: "hidden",
   },
   promoTitle: {
-    color: COLORS.ink,
+    color: COLORS.peach,
     fontSize: 19,
-    fontWeight: "900",
   },
   promoCopy: {
-    color: COLORS.ink,
+    color: COLORS.orange,
     fontSize: 15,
   },
   orderButton: {
@@ -52,12 +50,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     paddingHorizontal: 22,
     paddingVertical: 11,
-    backgroundColor: COLORS.ink,
+    backgroundColor: COLORS.peach,
   },
   orderButtonText: {
-    color: "#FFFFFF",
     fontSize: 15,
-    fontWeight: "800",
   },
   promoImage: {
     width: 120,

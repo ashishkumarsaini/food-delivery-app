@@ -3,11 +3,12 @@ import React from 'react'
 import { RESTRAURENTS } from '../../../../constants/restraurents'
 import { DISH_VARIANT, DishTile } from '../../../../components/tiles/dish'
 import { CustomText } from '../../../../components/text'
+import { COLORS } from '../../../../constants/theme'
 
 const ExploreByDishes = () => {
   return (
     <View style={styles.cardList}>
-      <CustomText style={styles.title}>Popular Dishes</CustomText>
+      <CustomText style={styles.title}>Explore By Dishes</CustomText>
       {RESTRAURENTS.map((restraurent) => (
         <ScrollView key={restraurent.id} horizontal contentContainerStyle={{ gap: 10 }} showsHorizontalScrollIndicator={false}>
           {restraurent.dishes.map((dish) => (
@@ -16,7 +17,7 @@ const ExploreByDishes = () => {
               dish={dish}
               restraurentId={restraurent.id}
               restraurentName={restraurent.name}
-              variant={DISH_VARIANT.card}
+              variant={DISH_VARIANT.simple}
             />
           ))}
         </ScrollView>
@@ -34,6 +35,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '900'
+    color: COLORS.clay
   }
 })
