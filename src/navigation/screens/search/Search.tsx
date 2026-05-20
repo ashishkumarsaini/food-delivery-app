@@ -1,20 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import React, { FC, useMemo, useState } from 'react'
 import { FlatList, StyleSheet, TextInput, View } from 'react-native'
-import { ScreenWrapper } from '../../components/Screen'
-import { CustomText } from '../../components/text'
+import { ScreenWrapper } from '../../../components/Screen'
+import { CustomText } from '../../../components/text'
 import { Route } from '@react-navigation/native'
-import { COLORS, FONTS } from '../../constants/theme'
-import { RESTRAURENTS } from '../../constants/restraurents'
-import { DISH_VARIANT, DishTile } from '../../components/tiles/dish'
-import { Dish } from '../../types/dish'
-
-type SearchDish = {
-  dish: Dish
-  restraurentId: string
-  restraurentName: string
-  location: string
-}
+import { COLORS, FONTS } from '../../../constants/theme'
+import { RESTRAURENTS } from '../../../constants/restraurents'
+import { DISH_VARIANT, DishTile } from '../../../components/tiles/dish'
 
 const allDishes = RESTRAURENTS.flatMap((restraurent) =>
   restraurent.dishes.map((dish) => ({
@@ -25,7 +17,7 @@ const allDishes = RESTRAURENTS.flatMap((restraurent) =>
   })),
 )
 
-const SearchScreen: FC<{ route: Route<string> }> = ({ route }) => {
+export const SearchScreen: FC<{ route: Route<string> }> = ({ route }) => {
   const { searchQuery } = route?.params as { searchQuery?: string } || { searchQuery: "" }
   const [query, setQuery] = useState(searchQuery ?? '')
 
@@ -105,9 +97,7 @@ const SearchScreen: FC<{ route: Route<string> }> = ({ route }) => {
       </View>
     </ScreenWrapper>
   )
-}
-
-export default SearchScreen
+};
 
 const styles = StyleSheet.create({
   container: {

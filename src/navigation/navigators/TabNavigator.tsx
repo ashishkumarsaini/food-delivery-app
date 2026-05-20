@@ -2,10 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { HomeScreen } from '../screens';
-import SearchScreen from '../screens/Search';
-import OrdersScreen from '../screens/Orders';
-import ProfileScreen from '../screens/Profile';
+import { HomeScreen, SearchScreen, OrdersScreen, ProfileScreen } from '../screens';
 import { COLORS } from '../../constants/theme';
 
 const Tab = createBottomTabNavigator();

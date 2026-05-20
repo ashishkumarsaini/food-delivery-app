@@ -1,8 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { GetStartedScreen } from "../screens/GetStarted";
-import { TabNavigator } from "./TabNavigator";
-import { DishScreen, RestraurentScreen, LoginScreen, RegisterScreen, CartScreen } from "../screens";
+import { DrawerNavigator } from "./DrawerNavigator";
+import { DishScreen, RestraurentScreen, LoginScreen, RegisterScreen, CartScreen, GetStartedScreen } from "../screens";
 import { useAuth } from "../../providers/auth-provider";
 
 const Stack = createNativeStackNavigator();
@@ -19,7 +18,7 @@ export const RootStack = () => {
           isAuthenticated ? (
             <>
               <Stack.Screen name="GetStarted" component={GetStartedScreen} />
-              <Stack.Screen name="Home" component={TabNavigator} />
+              <Stack.Screen name="Home" component={DrawerNavigator} />
               <Stack.Screen name="Dish" component={DishScreen} />
               <Stack.Screen name="Restraurent" component={RestraurentScreen} />
               <Stack.Screen name="Cart" component={CartScreen} />

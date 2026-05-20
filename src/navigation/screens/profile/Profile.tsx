@@ -1,13 +1,16 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { DrawerActions, useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
-import { ScreenWrapper } from '../../components/Screen'
-import { CustomText } from '../../components/text'
-import { COLORS, FONTS } from '../../constants/theme'
-import { useAuth } from '../../providers/auth-provider'
+import { ScreenWrapper } from '../../../components/Screen'
+import { CustomText } from '../../../components/text'
+import { COLORS, FONTS } from '../../../constants/theme'
+import { useAuth } from '../../../providers/auth-provider'
+import { ProfileRow } from './components/profile-row'
 
-const ProfileScreen = () => {
-  const { logout, user } = useAuth()
+export const ProfileScreen = () => {
+  const navigation = useNavigation()
+  const { user } = useAuth()
   const name = user?.name ?? 'Guest User'
   const email = user?.email ?? 'guest@foodie.app'
   const initials = name
@@ -21,8 +24,16 @@ const ProfileScreen = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <View style={styles.header}>
-          <CustomText style={styles.eyebrow}>Profile</CustomText>
-          <CustomText style={styles.title}>Your account</CustomText>
+          <View>
+            <CustomText style={styles.eyebrow}>Profile</CustomText>
+            <CustomText style={styles.title}>Your account</CustomText>
+          </View>
+          <Pressable
+            style={styles.drawerButton}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          >
+            <Ionicons name="menu-outline" size={22} color={COLORS.peach} />
+          </Pressable>
         </View>
 
         <View style={styles.profileCard}>
@@ -42,48 +53,32 @@ const ProfileScreen = () => {
           <ProfileRow icon="location-outline" label="Delivery area" value="Chandigarh, India" />
         </View>
 
-        <Pressable style={styles.logoutButton} onPress={logout}>
-          <Ionicons name="log-out-outline" size={18} color={COLORS.peach} />
-          <CustomText style={styles.logoutText}>Logout</CustomText>
-        </Pressable>
       </View>
     </ScreenWrapper>
   )
 }
 
-export default ProfileScreen
-
-const ProfileRow = ({
-  icon,
-  label,
-  value,
-}: {
-  icon: keyof typeof Ionicons.glyphMap
-  label: string
-  value: string
-}) => (
-  <View style={styles.row}>
-    <View style={styles.rowIcon}>
-      <Ionicons name={icon} size={18} color={COLORS.orange} />
-    </View>
-    <View style={styles.rowContent}>
-      <CustomText style={styles.rowLabel}>{label}</CustomText>
-      <CustomText numberOfLines={1} style={styles.rowValue}>{value}</CustomText>
-    </View>
-  </View>
-)
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: COLORS.peach,
     paddingHorizontal: 20,
     paddingTop: 22,
     paddingBottom: 108,
   },
   header: {
-    gap: 6,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 14,
     marginBottom: 28,
+  },
+  drawerButton: {
+    width: 46,
+    height: 46,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 23,
+    backgroundColor: COLORS.wine,
   },
   eyebrow: {
     color: COLORS.orange,
@@ -135,51 +130,5 @@ const styles = StyleSheet.create({
   section: {
     gap: 10,
     marginTop: 4,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 14,
-    borderRadius: 22,
-    backgroundColor: COLORS.wine,
-    padding: 14,
-  },
-  rowIcon: {
-    width: 42,
-    height: 42,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 21,
-    backgroundColor: COLORS.clay,
-  },
-  rowContent: {
-    flex: 1,
-    gap: 2,
-  },
-  rowLabel: {
-    color: COLORS.peach,
-    fontFamily: FONTS.regular,
-    fontSize: 12,
-    opacity: 0.62,
-  },
-  rowValue: {
-    color: COLORS.peach,
-    fontFamily: FONTS.medium,
-    fontSize: 16,
-  },
-  logoutButton: {
-    height: 56,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    marginTop: 18,
-    borderRadius: 28,
-    backgroundColor: COLORS.clay,
-  },
-  logoutText: {
-    color: COLORS.peach,
-    fontFamily: FONTS.semiBold,
-    fontSize: 16,
-  },
+  }
 })
