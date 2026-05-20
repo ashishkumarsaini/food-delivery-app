@@ -7,9 +7,13 @@ import { CustomText } from "../../../../components/text";
 export function DishCheckoutBar({
   price,
   onAddToCart,
+  isAvailable,
+  isRestraurentOpen
 }: {
   price: number;
   onAddToCart: () => void;
+  isAvailable: boolean;
+  isRestraurentOpen: boolean;
 }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
@@ -18,11 +22,14 @@ export function DishCheckoutBar({
 
   return (
     <View style={[styles.container, { bottom: insets.bottom + 18 }]}>
-      <Pressable onPress={onAddToCart} style={[styles.bar, { width: tabBarWidth, transform: [{ translateX: tabBarLeft }] }]}>
-        <CustomText style={styles.price}>Rs. {price.toFixed(2)}</CustomText>
-        <View style={styles.icon}>
+      <Pressable
+        disabled={!isAvailable || !isRestraurentOpen}
+        onPress={onAddToCart}
+        style={[styles.bar, { width: tabBarWidth, transform: [{ translateX: tabBarLeft }] }]}>
+        <CustomText style={styles.price}>{isAvailable && isRestraurentOpen ? `Rs. ${price.toFixed(2)}` : !isRestraurentOpen ? "Restraurent closed" : "Unavailable"}</CustomText>
+        {isAvailable && isRestraurentOpen && <View style={[styles.icon, !isAvailable && styles.iconDisabled]}>
           <FontAwesome name="cart-plus" size={25} color={COLORS.ink} />
-        </View>
+        </View>}
       </Pressable>
     </View>
   );
@@ -59,5 +66,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FFFFFF",
     fontSize: 14,
+  },
+  iconDisabled: {
+    opacity: 0.5,
   },
 });

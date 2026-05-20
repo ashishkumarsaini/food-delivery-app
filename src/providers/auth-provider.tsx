@@ -1,6 +1,6 @@
 import React, { createContext, FC, ReactNode, useContext, useMemo, useState } from "react";
 
-type AuthUser = {
+export type AuthUser = {
   name: string;
   email: string;
   password: string;

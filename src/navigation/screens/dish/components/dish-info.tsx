@@ -1,5 +1,5 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { Dish } from "../../../../types/dish";
 import { Restraurent } from "../../../../types/restraurent";
 import { COLORS } from "../../../../constants/theme";
@@ -7,17 +7,14 @@ import { InfoPill } from "./info-pile";
 import { Link } from "@react-navigation/native";
 import { CustomText } from "../../../../components/text";
 
-export function DishInfo({ dish, restraurent }: { dish: Dish; restraurent: Restraurent }) {
+export function DishInfo({ dish, restraurent, onRestraurentPress }: { dish: Dish; restraurent: Restraurent, onRestraurentPress: () => void }) {
   return (
     <View style={styles.container}>
       <View style={styles.titleRow}>
         <View style={{ flex: 1 }}>
-          <Link
-            screen='Restraurent'
-            params={{ restraurentId: restraurent.id }}
-            style={styles.restaurant}>
-            By {restraurent.name}
-          </Link>
+          <Pressable onPress={onRestraurentPress}>
+            <CustomText style={styles.restaurant}>By {restraurent.name}</CustomText>
+          </Pressable>
           <CustomText style={styles.title}>{dish.name}</CustomText>
         </View>
         <View style={styles.priceBadge}>

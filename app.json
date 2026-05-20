@@ -41,7 +41,8 @@
             "node_modules/@expo-google-fonts/fraunces/700Bold.ttf"
           ]
         }
-      ]
+      ],
+      "expo-secure-store"
     ]
   }
 }

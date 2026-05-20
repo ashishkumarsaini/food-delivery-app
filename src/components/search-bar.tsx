@@ -14,7 +14,7 @@ const SearchBar = () => {
       <View style={styles.searchBox} >
         <TextInput placeholder="Search for Dishes" value={searchQuery} onChangeText={setSearchQuery} style={styles.input} />
       </View>
-      <Pressable style={styles.filterButton} onPress={() => navigation.navigate("Search", { searchQuery })}>
+      <Pressable style={styles.filterButton} onPress={() => navigation.navigate("SearchTab", { searchQuery })}>
         <Ionicons name="search" size={18} color={COLORS.peach} />
       </Pressable>
     </View>

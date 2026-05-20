@@ -8,11 +8,12 @@ import { CustomText } from '../../text';
 const SimpleDishTile: FC<{
   dish: Dish, restraurentId: string,
   onClick: (restraurentId: string, dishId: string) => void,
-  onAddToCart: (restraurentId: string, dishId: string) => void
-}> = ({ dish, restraurentId, onClick, onAddToCart }) => {
+  onAddToCart: (restraurentId: string, dishId: string) => void,
+  isRestraurentOpen: boolean;
+}> = ({ dish, restraurentId, onClick, onAddToCart, isRestraurentOpen }) => {
   return (
     <Pressable style={styles.container} onPress={() => onClick(restraurentId, dish.id)}>
-      <Pressable style={styles.addButton} onPress={() => onAddToCart(restraurentId, dish.id)}>
+      <Pressable disabled={!dish.available || !isRestraurentOpen} style={[styles.addButton, (!dish.available || !isRestraurentOpen) && styles.iconDisabled]} onPress={() => onAddToCart(restraurentId, dish.id)}>
         <MaterialIcons name="add-circle" size={24} color={COLORS.wine} />
       </Pressable>
       <Image source={{ uri: dish.image }} style={styles.image} />
@@ -53,5 +54,8 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 14,
-  }
+  },
+  iconDisabled: {
+    opacity: 0.5,
+  },
 })

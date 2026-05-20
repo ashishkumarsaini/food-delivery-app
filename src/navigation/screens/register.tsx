@@ -6,27 +6,39 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "../../components/Button";
 import { CustomText } from "../../components/text";
 import { COLORS, FONTS } from "../../constants/theme";
-import { useAuth } from "../../providers/auth-provider";
+import { getValueFromStorage, saveValueToStorage } from "../../lib/storage";
 
 export const RegisterScreen = () => {
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
-  const { login } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleRegister = () => {
-    login({ name, email, password });
+  const handleRegister = async () => {
+    const value = await getValueFromStorage(email);
+
+    if (value) {
+      setError("User already exists")
+      return;
+    }
+
+    await saveValueToStorage(email, { name, email, password }).then(() => {
+      setError("")
+      navigation.navigate("Login");
+    }).catch((err) => {
+      console.log(err);
+      setError('Unable to create account')
+    });
+
   };
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <KeyboardAvoidingView
-        behavior="padding"
         style={[styles.screen, { paddingTop: insets.top + 20, paddingBottom: insets.bottom + 24 }]}
       >
-
         <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
           <Ionicons name="chevron-back" size={22} color={COLORS.peach} />
         </Pressable>
@@ -59,6 +71,7 @@ export const RegisterScreen = () => {
         </View>
 
         <View style={styles.actions}>
+          {error && <CustomText style={styles.error}>{error}</CustomText>}
           <Button onPress={handleRegister}>
             <CustomText style={styles.primaryText}>Create account</CustomText>
           </Button>
@@ -164,4 +177,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: FONTS.semiBold,
   },
+  error: {
+    textAlign: "center",
+    color: "#FF453A",
+    fontSize: 18,
+  }
 });

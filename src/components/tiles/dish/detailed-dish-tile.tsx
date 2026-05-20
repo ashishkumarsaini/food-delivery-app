@@ -35,6 +35,35 @@ const DetailedDishTile: FC<{
           </View>
           <CustomText style={styles.price}>${price.toFixed(0)}</CustomText>
         </View>
+
+        <View style={styles.metaRow}>
+          <View style={[styles.metaPill, type === "veg" ? styles.vegPill : styles.nonVegPill]}>
+            <View style={[styles.typeDot, type === "veg" ? styles.vegDot : styles.nonVegDot]} />
+            <CustomText style={styles.metaText}>
+              {type === "veg" ? "Vegetarian" : "Non-Vegetarian"}
+            </CustomText>
+          </View>
+
+          <View style={styles.metaPill}>
+            <Ionicons name="time-outline" size={12} color={COLORS.clay} />
+            <CustomText style={styles.metaText}>{deliveryTime}</CustomText>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.footerRow}>
+        {available ? (
+          <CustomText style={styles.availability}>Available</CustomText>
+        ) : (
+          <CustomText style={styles.unavailable}>Unavailable</CustomText>
+        )}
+        <Pressable
+          style={[styles.arrowButton, !available && styles.arrowDisabled]}
+          onPress={() => { }}
+          disabled={!available}
+        >
+          <Ionicons name="arrow-forward" size={14} color={COLORS.ink} />
+        </Pressable>
       </View>
     </Pressable>
   );
@@ -44,8 +73,7 @@ export default DetailedDishTile;
 
 const styles = StyleSheet.create({
   foodCard: {
-    width: 254,
-    marginRight: 16,
+    width: "100%",
     overflow: "hidden",
   },
   imageWrap: {

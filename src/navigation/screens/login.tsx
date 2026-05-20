@@ -6,8 +6,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "../../components/Button";
 import { CustomText } from "../../components/text";
 import { COLORS, FONTS } from "../../constants/theme";
-import { useAuth } from "../../providers/auth-provider";
+import { AuthUser, useAuth } from "../../providers/auth-provider";
 import { AppLogo } from "../../components/app-logo";
+import { getValueFromStorage } from "../../lib/storage";
 
 export const LoginScreen = () => {
   const navigation = useNavigation<any>();
@@ -15,9 +16,23 @@ export const LoginScreen = () => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    login({ name: "Ashish", email, password });
+  const handleLogin = async () => {
+    const user = await getValueFromStorage<AuthUser | null>(email);
+
+    if (!user) {
+      setError("User not found");
+      return;
+    }
+
+    if (user.password !== password) {
+      setError("Invalid password");
+      return;
+    }
+
+    setError("");
+    login(user);
   };
 
   return (
@@ -57,6 +72,7 @@ export const LoginScreen = () => {
           <Button onPress={handleLogin}>
             <CustomText style={styles.primaryText}>Login</CustomText>
           </Button>
+          {error && <CustomText style={styles.errorText}>{error}</CustomText>}
           <Pressable style={styles.linkButton} onPress={() => navigation.navigate("Register")}>
             <CustomText style={styles.linkMuted}>New here?</CustomText>
             <CustomText style={styles.linkText}>Create account</CustomText>
@@ -161,4 +177,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: FONTS.semiBold,
   },
+  errorText: {
+    color: "red",
+    fontSize: 18,
+    textAlign: "center",
+  }
 });

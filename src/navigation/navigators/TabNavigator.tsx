@@ -11,10 +11,10 @@ import { COLORS } from '../../constants/theme';
 const Tab = createBottomTabNavigator();
 
 const tabIcons = {
-  Home: ['home', 'home-outline'],
-  Search: ['search', 'search-outline'],
-  Orders: ['bag-check', 'bag-outline'],
-  Profile: ['person', 'person-outline'],
+  HomeTab: ['home', 'home-outline'],
+  SearchTab: ['search', 'search-outline'],
+  OrdersTab: ['bag-check', 'bag-outline'],
+  ProfileTab: ['person', 'person-outline'],
 } as const;
 
 type TabName = keyof typeof tabIcons;
@@ -53,10 +53,10 @@ export const TabNavigator = () => {
             <TabIcon focused={focused} routeName={route.name as TabName} />
           ),
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Search" component={SearchScreen} />
-        <Tab.Screen name="Orders" component={OrdersScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="HomeTab" component={HomeScreen} />
+        <Tab.Screen name="SearchTab" component={SearchScreen} />
+        <Tab.Screen name="OrdersTab" component={OrdersScreen} />
+        <Tab.Screen name="ProfileTab" component={ProfileScreen} />
       </Tab.Navigator>
     </View>
   )

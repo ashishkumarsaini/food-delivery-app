@@ -7,7 +7,6 @@ import { Recommendation } from "./components/add-to-order";
 import { DishCheckoutBar } from "./components/dish-checkout-bar";
 import { ScreenWrapper } from "../../../components/Screen";
 import { useCart } from "../../../providers/cart-provider";
-import { Dish } from "../../../types/dish";
 
 export function DishScreen() {
   const navigation = useNavigation<any>();
@@ -25,8 +24,16 @@ export function DishScreen() {
   }
 
   const handleAddToCart = () => {
+    if (!dish.available) {
+      return;
+    }
+
     addToCart(restraurentId, dish)
     navigation.navigate("Cart");
+  };
+
+  const handleRestraurentPress = () => {
+    navigation.navigate("Restraurent", { restraurentId });
   };
 
   return (
@@ -40,13 +47,15 @@ export function DishScreen() {
           onBack={() => navigation.goBack()}
         />
         <View style={styles.content}>
-          <DishInfo dish={dish} restraurent={restraurent} />
+          <DishInfo dish={dish} restraurent={restraurent} onRestraurentPress={handleRestraurentPress} />
           <Recommendation dishes={addOns} restraurentId={restraurentId} restraurentName={restraurent.name} />
         </View>
       </ScrollView>
       <DishCheckoutBar
         price={dish.price}
         onAddToCart={handleAddToCart}
+        isAvailable={dish.available}
+        isRestraurentOpen={restraurent.isOpen}
       />
     </ScreenWrapper>
   );
