@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 12,
     borderRadius: 22,
-    backgroundColor: '#FFF7F2',
+    backgroundColor: COLORS.peach,
     paddingHorizontal: 14,
   },
   iconWrap: {
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
-    backgroundColor: COLORS.peach,
+    backgroundColor: '#FFF7F2',
   },
   label: {
     flex: 1,

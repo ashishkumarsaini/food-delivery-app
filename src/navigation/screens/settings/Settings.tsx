@@ -27,7 +27,6 @@ export const SettingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.peach,
     paddingHorizontal: 20,
     paddingTop: 24,
   },

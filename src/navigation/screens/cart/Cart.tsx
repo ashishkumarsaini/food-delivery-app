@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     paddingHorizontal: 15,
-    backgroundColor: COLORS.peach,
   },
   heroCard: {
     flexDirection: "row",
@@ -169,7 +168,7 @@ const styles = StyleSheet.create({
     gap: 8,
     marginTop: 42,
     borderRadius: 28,
-    backgroundColor: "#FFF7F2",
+    backgroundColor: COLORS.peach,
     padding: 26,
   },
   emptyTitle: {

@@ -52,7 +52,7 @@ export function CartItemRow({
               <Ionicons name="remove" size={13} color={COLORS.ink} />
             </Pressable>
             <CustomText style={styles.quantity}>{quantity}</CustomText>
-            <Pressable style={styles.stepButtonActive} onPress={onIncrement}>
+            <Pressable style={styles.stepButton} onPress={onIncrement}>
               <Ionicons name="add" size={13} color={COLORS.ink} />
             </Pressable>
           </View>
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
     gap: 12,
     borderRadius: 24,
     padding: 12,
-    backgroundColor: "#FFF7F2",
+    backgroundColor: COLORS.peach,
   },
   itemImage: {
     width: 92,
     height: 106,
     borderRadius: 18,
-    backgroundColor: COLORS.peach,
+    backgroundColor: "#FFF7F2",
   },
   itemBody: {
     flex: 1,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 14,
-    backgroundColor: COLORS.peach,
+    backgroundColor: "#FFF7F2",
   },
   itemMetaRow: {
     flexDirection: "row",
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: 9,
     paddingVertical: 6,
-    backgroundColor: COLORS.peach,
+    backgroundColor: "#FFF7F2",
   },
   metaText: {
     color: COLORS.clay,
@@ -145,14 +145,6 @@ const styles = StyleSheet.create({
     gap: 9,
   },
   stepButton: {
-    width: 24,
-    height: 24,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 999,
-    backgroundColor: "#FFF2EA",
-  },
-  stepButtonActive: {
     width: 24,
     height: 24,
     alignItems: "center",

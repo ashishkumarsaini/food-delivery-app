@@ -96,7 +96,6 @@ const OrderCard = ({ order }: { order: Order }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.peach,
     paddingHorizontal: 18,
   },
   listContent: {
@@ -141,7 +140,7 @@ const styles = StyleSheet.create({
   },
   orderCard: {
     borderRadius: 28,
-    backgroundColor: '#FFF7F2',
+    backgroundColor: COLORS.peach,
     padding: 16,
   },
   orderTop: {
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 7,
     borderRadius: 17,
-    backgroundColor: COLORS.peach,
+    backgroundColor: '#FFF7F2',
     paddingHorizontal: 11,
   },
   statusDot: {
