@@ -2,14 +2,22 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { CustomText } from "../../../../components/text";
 import { COLORS, FONTS } from "../../../../constants/theme";
 
-export function CheckoutBar({ total, bottomInset }: { total: number; bottomInset: number }) {
+export function CheckoutBar({
+  bottomInset,
+  onCheckout,
+  total,
+}: {
+  bottomInset: number;
+  onCheckout: () => void;
+  total: number;
+}) {
   return (
     <View style={[styles.checkoutShell, { paddingBottom: bottomInset + 14 }]}>
       <View>
         <CustomText style={styles.checkoutLabel}>Total amount</CustomText>
         <CustomText style={styles.checkoutPrice}>${total.toFixed(2)}</CustomText>
       </View>
-      <Pressable style={styles.checkoutButton}>
+      <Pressable style={styles.checkoutButton} onPress={onCheckout}>
         <CustomText style={styles.checkoutText}>Checkout</CustomText>
       </Pressable>
     </View>

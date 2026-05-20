@@ -79,7 +79,7 @@ export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
       updateQuantity,
       clearCart,
     };
-  }, [items.length]);
+  }, [items]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

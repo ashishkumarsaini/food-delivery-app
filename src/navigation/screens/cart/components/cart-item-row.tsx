@@ -7,13 +7,21 @@ import { Restraurent } from "../../../../types/restraurent";
 
 export function CartItemRow({
   dish,
+  onDecrement,
+  onIncrement,
+  onRemove,
   quantity,
   restraurent,
 }: {
   dish: Dish;
+  onDecrement: () => void;
+  onIncrement: () => void;
+  onRemove: () => void;
   quantity: number;
   restraurent: Restraurent;
 }) {
+  const itemTotal = dish.price * quantity;
+
   return (
     <View style={styles.cartItem}>
       <Image source={{ uri: dish.image }} style={styles.itemImage} />
@@ -24,7 +32,9 @@ export function CartItemRow({
             <CustomText style={styles.itemTitle}>{dish.name}</CustomText>
             <CustomText style={styles.itemSource}>{restraurent.name}</CustomText>
           </View>
-          <CustomText style={styles.itemPrice}>${dish.price.toFixed(2)}</CustomText>
+          <Pressable style={styles.removeButton} onPress={onRemove}>
+            <Ionicons name="close" size={14} color={COLORS.clay} />
+          </Pressable>
         </View>
 
         <View style={styles.itemMetaRow}>
@@ -32,13 +42,17 @@ export function CartItemRow({
             <Ionicons name="time-outline" size={13} color={COLORS.clay} />
             <CustomText style={styles.metaText}>{dish.deliveryTime}</CustomText>
           </View>
+          <CustomText style={styles.itemPrice}>Rs. {itemTotal.toFixed(0)}</CustomText>
+        </View>
 
+        <View style={styles.footerRow}>
+          <CustomText style={styles.unitPrice}>Rs. {dish.price.toFixed(0)} each</CustomText>
           <View style={styles.stepper}>
-            <Pressable style={styles.stepButton}>
+            <Pressable style={styles.stepButton} onPress={onDecrement}>
               <Ionicons name="remove" size={13} color={COLORS.ink} />
             </Pressable>
             <CustomText style={styles.quantity}>{quantity}</CustomText>
-            <Pressable style={styles.stepButtonActive}>
+            <Pressable style={styles.stepButtonActive} onPress={onIncrement}>
               <Ionicons name="add" size={13} color={COLORS.ink} />
             </Pressable>
           </View>
@@ -51,14 +65,14 @@ export function CartItemRow({
 const styles = StyleSheet.create({
   cartItem: {
     flexDirection: "row",
-    gap: 10,
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: "#FFFFFF",
+    gap: 12,
+    borderRadius: 24,
+    padding: 12,
+    backgroundColor: "#FFF7F2",
   },
   itemImage: {
-    width: 82,
-    height: 82,
+    width: 92,
+    height: 106,
     borderRadius: 18,
     backgroundColor: COLORS.peach,
   },
@@ -74,16 +88,27 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     color: COLORS.ink,
-    fontSize: 18,
+    fontFamily: FONTS.medium,
+    fontSize: 17,
   },
   itemSource: {
-    marginTop: 10,
-    color: COLORS.wine,
-    fontSize: 14,
+    marginTop: 4,
+    color: COLORS.clay,
+    fontFamily: FONTS.regular,
+    fontSize: 13,
   },
   itemPrice: {
     color: COLORS.orange,
-    fontSize: 16,
+    fontFamily: FONTS.semiBold,
+    fontSize: 15,
+  },
+  removeButton: {
+    width: 28,
+    height: 28,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 14,
+    backgroundColor: COLORS.peach,
   },
   itemMetaRow: {
     flexDirection: "row",
@@ -101,7 +126,18 @@ const styles = StyleSheet.create({
   },
   metaText: {
     color: COLORS.clay,
-    fontSize: 14,
+    fontFamily: FONTS.regular,
+    fontSize: 12,
+  },
+  footerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  unitPrice: {
+    color: COLORS.clay,
+    fontFamily: FONTS.regular,
+    fontSize: 12,
   },
   stepper: {
     flexDirection: "row",
@@ -126,6 +162,7 @@ const styles = StyleSheet.create({
   },
   quantity: {
     color: COLORS.ink,
+    fontFamily: FONTS.medium,
     fontSize: 13,
   },
 });

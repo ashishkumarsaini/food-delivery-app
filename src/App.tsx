@@ -3,6 +3,7 @@ import { StatusBar, View } from 'react-native';
 import { RootStack } from './navigation/navigators/RootNavigator';
 import { AuthProvider } from './providers/auth-provider';
 import { CartProvider } from './providers/cart-provider';
+import { OrdersProvider } from './providers/orders-provider';
 
 // SplashScreen.preventAutoHideAsync();
 
@@ -11,9 +12,11 @@ export function App() {
     <>
       <StatusBar barStyle='dark-content' />
       <AuthProvider>
-        <CartProvider>
-          <RootStack />
-        </CartProvider>
+        <OrdersProvider>
+          <CartProvider>
+            <RootStack />
+          </CartProvider>
+        </OrdersProvider>
       </AuthProvider>
     </>
   );

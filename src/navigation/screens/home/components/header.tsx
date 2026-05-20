@@ -3,9 +3,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Pressable, StyleSheet, View } from 'react-native'
 import { COLORS } from '../../../../constants/theme';
 import { CustomText } from "../../../../components/text";
+import { useCart } from '../../../../providers/cart-provider';
 
 const HomeHeader = () => {
   const navigation = useNavigation<any>();
+  const { itemCount } = useCart();
 
   return (
     <View style={styles.header}>
@@ -19,9 +21,11 @@ const HomeHeader = () => {
 
       <Pressable style={styles.bagButton} onPress={() => navigation.navigate("Cart")}>
         <Ionicons name="bag-handle-outline" size={21} color={COLORS.ink} />
-        <View style={styles.badge}>
-          <CustomText style={styles.badgeText}>2</CustomText>
-        </View>
+        {itemCount > 0 && (
+          <View style={styles.badge}>
+            <CustomText style={styles.badgeText}>{itemCount}</CustomText>
+          </View>
+        )}
       </Pressable>
     </View>
   )

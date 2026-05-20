@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { CustomText } from "../../../../components/text";
 import { COLORS, FONTS } from "../../../../constants/theme";
 
-export function CartHeader({ onBack }: { onBack: () => void }) {
+export function CartHeader({ itemCount, onBack, onClear }: { itemCount: number; onBack: () => void; onClear: () => void }) {
   return (
     <View style={styles.header}>
       <Pressable style={styles.iconButton} onPress={onBack}>
@@ -11,9 +11,10 @@ export function CartHeader({ onBack }: { onBack: () => void }) {
       </Pressable>
       <View style={styles.headerCopy}>
         <CustomText style={styles.title}>Cart</CustomText>
+        <CustomText style={styles.subtitle}>{itemCount} items</CustomText>
       </View>
-      <Pressable style={styles.iconButton}>
-        <Ionicons name="trash-outline" size={19} color={COLORS.clay} />
+      <Pressable style={styles.iconButton} onPress={onClear}>
+        <Ionicons name="trash-outline" size={19} color={itemCount ? COLORS.clay : COLORS.peach} />
       </Pressable>
     </View>
   );
@@ -39,6 +40,12 @@ const styles = StyleSheet.create({
   },
   title: {
     color: COLORS.ink,
+    fontFamily: FONTS.semiBold,
     fontSize: 22,
+  },
+  subtitle: {
+    color: COLORS.clay,
+    fontFamily: FONTS.regular,
+    fontSize: 12,
   },
 });
