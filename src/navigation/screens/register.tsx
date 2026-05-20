@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
   },
   actions: {
     gap: 18,
+    paddingBottom: 100,
   },
   primaryText: {
     color: "#FFFFFF",

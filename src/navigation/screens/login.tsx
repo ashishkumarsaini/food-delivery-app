@@ -26,7 +26,7 @@ export const LoginScreen = () => {
         behavior="padding"
         style={[styles.screen, { paddingTop: insets.top + 20, paddingBottom: insets.bottom + 24 }]}
       >
-        <AppLogo />
+        <View />
         <View style={styles.header}>
           <CustomText style={styles.eyebrow}>Welcome back</CustomText>
           <CustomText style={styles.title}>Sign in to fresh food, faster.</CustomText>
@@ -57,7 +57,7 @@ export const LoginScreen = () => {
           <Button onPress={handleLogin}>
             <CustomText style={styles.primaryText}>Login</CustomText>
           </Button>
-          <Pressable style={styles.linkButton} onPress={() => navigation.navigate("Home")}>
+          <Pressable style={styles.linkButton} onPress={() => navigation.navigate("Register")}>
             <CustomText style={styles.linkMuted}>New here?</CustomText>
             <CustomText style={styles.linkText}>Create account</CustomText>
           </Pressable>
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
   },
   actions: {
     gap: 18,
+    paddingBottom: 100,
   },
   primaryText: {
     color: "#FFFFFF",
