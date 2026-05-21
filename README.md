@@ -42,6 +42,16 @@ Restaurant and dish data currently lives in `src/constants/restraurents.ts`. Eac
 
 The app uses a root stack for auth and main app routes. After authentication, the main experience is wrapped in a drawer navigator with nested bottom tabs. Detail routes such as Dish, Restaurant, and Cart are opened from the stack.
 
+## Deep Linking
+
+The app uses the custom scheme `fooddelivery` for deep links. A restaurant can be opened with its restaurant id:
+
+```text
+fooddelivery://restaurant/spice-garden
+```
+
+The restaurant deep link expects a valid `restraurentId` from the mock data and should be tested after the user is authenticated.
+
 ## State
 
 - `AuthProvider` stores the active signed-in user.
