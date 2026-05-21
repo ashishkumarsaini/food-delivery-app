@@ -1,4 +1,5 @@
-import React, { createContext, FC, ReactNode, useContext, useMemo, useState } from "react";
+import React, { createContext, FC, ReactNode, useContext, useEffect, useMemo, useState } from "react";
+import { getValueFromStorage, saveValueToStorage } from "../lib/storage";
 
 export type AuthUser = {
   name: string;
@@ -18,12 +19,27 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
 
+  useEffect(() => {
+    const checkUser = async () => {
+      const user = await getValueFromStorage<AuthUser | null>('loggedInUser');
+      if (user) {
+        setUser(user);
+      }
+    }
+    checkUser();
+  }, [])
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
       isAuthenticated: Boolean(user),
       login: setUser,
-      logout: () => setUser(null),
+      logout: async () => {
+        await saveValueToStorage('isNewUser', false);
+        await saveValueToStorage('loggedInUser', null);
+        await saveValueToStorage('isNewUser', false);
+        setUser(null)
+      },
     }),
     [user],
   );

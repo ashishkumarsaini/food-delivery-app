@@ -4,11 +4,13 @@ import { Image, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { CustomText } from "../../components/text";
+import { saveValueToStorage } from "../../lib/storage";
 
 export function GetStartedScreen() {
   const navigation = useNavigation<any>();
 
-  const onPress = () => {
+  const onPress = async () => {
+    await saveValueToStorage('isNewUser', true);
     navigation.navigate("Home");
   };
 

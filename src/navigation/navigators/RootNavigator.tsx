@@ -1,16 +1,26 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import * as Linking from "expo-linking";
 import { DrawerNavigator } from "./DrawerNavigator";
 import { DishScreen, RestraurentScreen, LoginScreen, RegisterScreen, CartScreen, GetStartedScreen } from "../screens";
 import { useAuth } from "../../providers/auth-provider";
 
 const Stack = createNativeStackNavigator();
 
+const linking = {
+  prefixes: [Linking.createURL("/"), "fooddelivery://"],
+  config: {
+    screens: {
+      Restraurent: "restaurant/:restraurentId",
+    },
+  },
+};
+
 export const RootStack = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator screenOptions={{
         headerShown: false,
       }}>

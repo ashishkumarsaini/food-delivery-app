@@ -7,8 +7,7 @@ import { Button } from "../../components/Button";
 import { CustomText } from "../../components/text";
 import { COLORS, FONTS } from "../../constants/theme";
 import { AuthUser, useAuth } from "../../providers/auth-provider";
-import { AppLogo } from "../../components/app-logo";
-import { getValueFromStorage } from "../../lib/storage";
+import { getValueFromStorage, saveValueToStorage } from "../../lib/storage";
 
 export const LoginScreen = () => {
   const navigation = useNavigation<any>();
@@ -37,6 +36,7 @@ export const LoginScreen = () => {
     }
 
     setError("");
+    await saveValueToStorage('loggedInUser', user);
     login(user);
   };
 
