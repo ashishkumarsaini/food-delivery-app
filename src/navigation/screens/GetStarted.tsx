@@ -11,7 +11,7 @@ export function GetStartedScreen() {
 
   const onPress = async () => {
     await saveValueToStorage('isNewUser', true);
-    navigation.navigate("Home");
+    navigation.replace("Home");
   };
 
   return (
