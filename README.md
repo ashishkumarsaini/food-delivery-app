@@ -1,65 +1,80 @@
-# Starter Template with React Navigation
+# Food Delivery App
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+A mobile food delivery application built with Expo, React Native, TypeScript, and React Navigation. The project focuses on clean mobile UI, reusable components, and a simple ordering flow built from mock restaurant data.
 
-It includes the following:
+## Features
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic [deep link](https://reactnavigation.org/docs/deep-linking) and [URL handling configuration](https://reactnavigation.org/docs/configuring-links)
-- Theme support [based on system appearance](https://reactnavigation.org/docs/themes/#using-the-operating-system-preferences)
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
+- Login and register screens with local user storage
+- Get started onboarding screen
+- Home screen for browsing restaurants and dishes
+- Dish detail screen with recommendations and add-to-cart flow
+- Restaurant detail screen with menu listing
+- Search screen with dish filtering
+- Cart with quantity controls, pricing summary, and checkout
+- Orders screen that displays checked-out cart items
+- Profile screen with account details
+- Drawer navigation for My Orders, Settings, Help, and Logout
 
-## Getting Started
+## Tech Stack
 
-1. Create a new project using this template:
+- Expo SDK 55
+- React Native
+- TypeScript
+- React Navigation stack, tabs, and drawer
+- Context providers for auth, cart, and orders
+- Expo Secure Store for account data
+- Fraunces Google Font for typography
 
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
+## Project Structure
 
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
+```text
+src/
+  components/        Reusable UI pieces and tiles
+  constants/         Theme colors and restaurant mock data
+  navigation/        Navigators and screen modules
+  providers/         Auth, cart, and order state
+  types/             Shared TypeScript models
+```
 
-3. Edit the `src/App.tsx` file to start working on your app.
+Restaurant and dish data currently lives in `src/constants/restraurents.ts`. Each restaurant and dish has a unique id and the UI uses this mock data for browse, search, cart, and order flows.
 
-## Running the app
+## Navigation
 
-- Install the dependencies:
+The app uses a root stack for auth and main app routes. After authentication, the main experience is wrapped in a drawer navigator with nested bottom tabs. Detail routes such as Dish, Restaurant, and Cart are opened from the stack.
 
-  ```sh
-  npm install
-  ```
+## State
 
-- Start the development server:
+- `AuthProvider` stores the active signed-in user.
+- `CartProvider` manages cart items, quantities, and subtotal.
+- `OrdersProvider` stores orders created during checkout.
 
-  ```sh
-  npm start
-  ```
+These providers keep the project simple while making state available across screens.
 
-- Build and run iOS and Android development builds:
+## How to Start This App
 
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
+Install dependencies:
 
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
+```sh
+npm install
+```
+
+Start Expo:
+
+```sh
+npm run start
+```
+
+Then open the project with Expo Go, an Android emulator, iOS simulator, or the web option from the Expo terminal.
+
+## Scripts
+
+```sh
+npm run start
+npm run android
+npm run ios
+npm run web
+```
 
 ## Notes
 
-This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script.
-
-We highly recommend using the development builds for normal development and testing.
-
-The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
-
-## Resources
-
-- [React Navigation documentation](https://reactnavigation.org/)
-- [Expo documentation](https://docs.expo.dev/)
-
----
-
-Demo assets are from [lucide.dev](https://lucide.dev/)
+This is an assignment and learning project. It uses mock food data and local app state instead of a backend, so orders and cart data are not persisted after the app session ends.
