@@ -17,6 +17,11 @@ export const RegisterScreen = () => {
   const [error, setError] = useState("");
 
   const handleRegister = async () => {
+    if (email.length === 0 || password.length === 0 || name.length === 0) {
+      setError("Please enter all the details");
+      return;
+    }
+
     const value = await getValueFromStorage(email);
 
     if (value) {

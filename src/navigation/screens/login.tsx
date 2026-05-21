@@ -19,6 +19,11 @@ export const LoginScreen = () => {
   const [error, setError] = useState("");
 
   const handleLogin = async () => {
+    if (email.length === 0 || password.length === 0) {
+      setError("Please enter email and password");
+      return;
+    }
+
     const user = await getValueFromStorage<AuthUser | null>(email);
 
     if (!user) {
